@@ -11,10 +11,6 @@ use DateTime;
 class CastMember extends Entity
 {
     /**
-     * @param string $name
-     * @param CastMemberType $type
-     * @param Uuid|null $id
-     * @param DateTime|null $createdAt
      * @throws EntityValidationException
      */
     public function __construct(
@@ -32,8 +28,6 @@ class CastMember extends Entity
     }
 
     /**
-     * @param string $name
-     * @return void
      * @throws EntityValidationException
      */
     public function update(string $name): void
@@ -44,7 +38,6 @@ class CastMember extends Entity
     }
 
     /**
-     * @return void
      * @throws EntityValidationException
      */
     protected function validate(): void

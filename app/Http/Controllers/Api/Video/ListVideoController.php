@@ -8,10 +8,9 @@ use Core\Data\UseCases\Video\List\DTO\ListVideoInputDto;
 use Core\Data\UseCases\Video\List\ListVideoUseCase;
 use Illuminate\Http\JsonResponse;
 
-class
-ListVideoController extends Controller
+class ListVideoController extends Controller
 {
-    public function __construct(private readonly  ListVideoUseCase $useCase)
+    public function __construct(private readonly ListVideoUseCase $useCase)
     {
     }
 
@@ -24,6 +23,6 @@ ListVideoController extends Controller
         );
 
         return (new VideoResource($response))->response();
-//        return ApiAdapter::json($response);
+        //        return ApiAdapter::json($response);
     }
 }

@@ -12,17 +12,12 @@ use Core\Domain\ValueObject\Media;
 
 class ChangeEncodedPathVideoUseCase implements ChangeEncodedPathVideoUseCaseInterface
 {
-    /**
-     * @param VideoRepositoryInterface $repository
-     */
     public function __construct(
         protected VideoRepositoryInterface $repository
     ) {
     }
 
     /**
-     * @param ChangeEncodedVideoInputDto $input
-     * @return ChangeEncodedVideoOutputDto
      * @throws NotFoundException
      * @throws NotificationException
      */

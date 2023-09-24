@@ -10,9 +10,6 @@ class PaginationPresenter implements PaginationInterface
     /** @return \stdClass[] */
     protected array $items = [];
 
-    /**
-     * @param LengthAwarePaginator $paginator
-     */
     public function __construct(
         protected LengthAwarePaginator $paginator
     ) {
@@ -29,66 +26,41 @@ class PaginationPresenter implements PaginationInterface
         return $this->items;
     }
 
-    /**
-     * @return int
-     */
     public function total(): int
     {
         return $this->paginator->total() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function lastPage(): int
     {
         return $this->paginator->lastPage() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function firstPage(): int
     {
         return $this->paginator->firstItem() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function currentPage(): int
     {
         return $this->paginator->currentPage() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function perPage(): int
     {
         return $this->paginator->perPage() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function to(): int
     {
         return $this->paginator->firstItem() ?? 0;
     }
 
-    /**
-     * @return int
-     */
     public function from(): int
     {
         return $this->paginator->lastItem() ?? 0;
     }
 
-    /**
-     * @param array $items
-     * @return array
-     */
     private function resolveItems(array $items): array
     {
         $response = [];

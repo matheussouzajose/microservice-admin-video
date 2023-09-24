@@ -6,11 +6,6 @@ use Core\Domain\Enum\MediaStatus;
 
 class Media
 {
-    /**
-     * @param string $filePath
-     * @param MediaStatus $mediaStatus
-     * @param string $encodedPath
-     */
     public function __construct(
         protected string $filePath,
         protected MediaStatus $mediaStatus,
@@ -19,7 +14,6 @@ class Media
     }
 
     /**
-     * @param $property
      * @return mixed
      */
     public function __get($property)

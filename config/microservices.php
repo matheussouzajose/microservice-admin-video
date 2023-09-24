@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     'queue_name' => env('RABBITMQ_QUEUE'),
 

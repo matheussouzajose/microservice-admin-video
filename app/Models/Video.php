@@ -36,65 +36,41 @@ class Video extends Model
         'deleted_at' => 'datetime',
     ];
 
-    /**
-     * @return BelongsToMany
-     */
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    /**
-     * @return BelongsToMany
-     */
     public function genres(): BelongsToMany
     {
         return $this->belongsToMany(Genre::class);
     }
 
-    /**
-     * @return BelongsToMany
-     */
     public function castMembers(): BelongsToMany
     {
         return $this->belongsToMany(CastMember::class, 'cast_member_video');
     }
 
-    /**
-     * @return HasOne
-     */
     public function media(): HasOne
     {
         return $this->hasOne(MediaVideo::class)->where('type', (string) MediaTypes::VIDEO->value);
     }
 
-    /**
-     * @return HasOne
-     */
     public function trailer(): HasOne
     {
         return $this->hasOne(MediaVideo::class)->where('type', (string) MediaTypes::TRAILER->value);
     }
 
-    /**
-     * @return HasOne
-     */
     public function banner(): HasOne
     {
         return $this->hasOne(ImageVideo::class)->where('type', (string) ImageTypes::BANNER->value);
     }
 
-    /**
-     * @return HasOne
-     */
     public function thumb(): HasOne
     {
         return $this->hasOne(ImageVideo::class)->where('type', (string) ImageTypes::THUMB->value);
     }
 
-    /**
-     * @return HasOne
-     */
     public function thumbHalf(): HasOne
     {
         return $this->hasOne(ImageVideo::class)->where('type', (string) ImageTypes::THUMB_HALF->value);

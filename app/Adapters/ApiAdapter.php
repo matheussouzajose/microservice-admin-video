@@ -20,7 +20,7 @@ class ApiAdapter
 
     private function validResource(): void
     {
-        if (!is_subclass_of($this->resource, JsonResource::class)) {
+        if (! is_subclass_of($this->resource, JsonResource::class)) {
             $this->resource = DefaultResource::class;
         }
     }

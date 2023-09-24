@@ -2,24 +2,17 @@
 
 namespace Core\Data\UseCases\Genre\List;
 
-use Core\Domain\Repository\GenreRepositoryInterface;
 use Core\Data\UseCases\Genre\List\DTO\ListGenreInputDto;
 use Core\Data\UseCases\Genre\List\DTO\ListGenreOutputDto;
+use Core\Domain\Repository\GenreRepositoryInterface;
 
 class ListGenreUseCase implements ListGenreUseCaseInterface
 {
-    /**
-     * @param GenreRepositoryInterface $repository
-     */
     public function __construct(
         protected GenreRepositoryInterface $repository
     ) {
     }
 
-    /**
-     * @param ListGenreInputDto $input
-     * @return ListGenreOutputDto
-     */
     public function execute(ListGenreInputDto $input): ListGenreOutputDto
     {
         $genre = $this->repository->findById(entityId: $input->id);

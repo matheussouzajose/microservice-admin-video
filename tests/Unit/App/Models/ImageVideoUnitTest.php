@@ -10,9 +10,6 @@ use Tests\Unit\App\Models\ModelTestCase;
 
 class ImageVideoUnitTest extends ModelTestCase
 {
-    /**
-     * @return Model
-     */
     protected function model(): Model
     {
         return new ImageVideo();
@@ -25,7 +22,7 @@ class ImageVideoUnitTest extends ModelTestCase
     {
         return [
             HasFactory::class,
-            UuidTrait::class
+            UuidTrait::class,
         ];
     }
 

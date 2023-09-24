@@ -18,9 +18,6 @@ class SendVideoToMicroEncoder
 
     /**
      * Handle the event.
-     *
-     * @param object $event
-     * @return void
      */
     public function handle(object $event): void
     {
@@ -30,10 +27,10 @@ class SendVideoToMicroEncoder
         );
 
         // Send for the same queue that is consumer, only test.
-//        $this->amqp->producer(
-//            queue: config('microservices.queue_name'),
-//            payload: $event->getPayload(),
-//            exchange: config('microservices.micro_encoder_go.exchange_producer')
-//        );
+        //        $this->amqp->producer(
+        //            queue: config('microservices.queue_name'),
+        //            payload: $event->getPayload(),
+        //            exchange: config('microservices.micro_encoder_go.exchange_producer')
+        //        );
     }
 }

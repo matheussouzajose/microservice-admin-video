@@ -10,6 +10,7 @@ use Tests\Traits\WithoutMiddlewareTrait;
 class CategoryApiTest extends TestCase
 {
     use WithoutMiddlewareTrait;
+
     protected string $endpoint = '/api/v1/categories';
 
     public function testListCategoriesEmpty()
@@ -40,7 +41,6 @@ class CategoryApiTest extends TestCase
         ]);
         $response->assertJsonCount(15, 'data');
     }
-
 
     public function testListPaginateCategories()
     {
@@ -198,5 +198,4 @@ class CategoryApiTest extends TestCase
             'id' => $category->id,
         ]);
     }
-
 }

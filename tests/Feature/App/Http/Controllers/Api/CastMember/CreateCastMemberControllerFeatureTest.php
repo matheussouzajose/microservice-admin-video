@@ -24,6 +24,7 @@ class CreateCastMemberControllerFeatureTest extends TestCase
 
         parent::setUp();
     }
+
     public function testCreate()
     {
         $useCase = new CreateCastMemberUseCase($this->repository);

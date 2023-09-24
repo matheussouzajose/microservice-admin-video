@@ -9,17 +9,12 @@ use Core\Domain\Repository\CategoryRepositoryInterface;
 
 class UpdateCategoryUseCase implements UpdateCategoryUseCaseInterface
 {
-    /**
-     * @param CategoryRepositoryInterface $categoryRepository
-     */
     public function __construct(
         protected CategoryRepositoryInterface $categoryRepository
     ) {
     }
 
     /**
-     * @param UpdateCategoryInputDto $input
-     * @return UpdateCategoryOutputDto
      * @throws EntityValidationException
      */
     public function execute(UpdateCategoryInputDto $input): UpdateCategoryOutputDto

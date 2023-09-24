@@ -4,16 +4,6 @@ namespace Core\Data\UseCases\CastMember\Paginate\DTO;
 
 class PaginateCastMembersOutputDto
 {
-    /**
-     * @param array $items
-     * @param int $total
-     * @param int $current_page
-     * @param int $last_page
-     * @param int $first_page
-     * @param int $per_page
-     * @param int $to
-     * @param int $from
-     */
     public function __construct(
         public array $items,
         public int $total,

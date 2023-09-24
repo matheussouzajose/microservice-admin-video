@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategoryUnitTest extends ModelTestCase
 {
-    /**
-     * @return Model
-     */
     protected function model(): Model
     {
         return new Category();

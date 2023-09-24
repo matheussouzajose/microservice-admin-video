@@ -11,6 +11,7 @@ use Tests\Traits\WithoutMiddlewareTrait;
 class GenreApiTest extends TestCase
 {
     use WithoutMiddlewareTrait;
+
     protected string $endpoint = '/api/v1/genres';
 
     public function testIndexEmpty()

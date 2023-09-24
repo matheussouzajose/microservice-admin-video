@@ -10,17 +10,10 @@ use Illuminate\Http\JsonResponse;
 
 class ListCategoryController extends Controller
 {
-    /**
-     * @param ListCategoryUseCaseInterface $useCase
-     */
     public function __construct(private readonly ListCategoryUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param string $id
-     * @return JsonResponse
-     */
     public function __invoke(string $id): JsonResponse
     {
         $category = $this->useCase->execute(

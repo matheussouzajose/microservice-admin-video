@@ -8,13 +8,7 @@ use Core\Domain\ValueObject\Uuid;
 
 class Genre extends Entity
 {
-
     /**
-     * @param string $name
-     * @param Uuid|null $id
-     * @param bool $isActive
-     * @param array $categoriesId
-     * @param \DateTime|null $createdAt
      * @throws NotificationException
      */
     public function __construct(
@@ -32,25 +26,17 @@ class Genre extends Entity
         $this->validate();
     }
 
-    /**
-     * @return void
-     */
     public function activate(): void
     {
         $this->isActive = true;
     }
 
-    /**
-     * @return void
-     */
     public function deactivate(): void
     {
         $this->isActive = false;
     }
 
     /**
-     * @param string $name
-     * @return void
      * @throws NotificationException
      */
     public function update(string $name): void
@@ -60,26 +46,17 @@ class Genre extends Entity
         $this->validate();
     }
 
-    /**
-     * @param string $categoryId
-     * @return void
-     */
     public function addCategory(string $categoryId): void
     {
         $this->categoriesId[] = $categoryId;
     }
 
-    /**
-     * @param string $categoryId
-     * @return void
-     */
     public function removeCategory(string $categoryId): void
     {
         unset($this->categoriesId[array_search($categoryId, $this->categoriesId)]);
     }
 
     /**
-     * @return void
      * @throws NotificationException
      */
     protected function validate(): void
@@ -92,5 +69,4 @@ class Genre extends Entity
             );
         }
     }
-
 }

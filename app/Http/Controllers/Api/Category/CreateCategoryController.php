@@ -12,17 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CreateCategoryController extends Controller
 {
-    /**
-     * @param CreateCategoryUseCaseInterface $useCase
-     */
     public function __construct(private readonly CreateCategoryUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param StoreCategoryRequest $request
-     * @return JsonResponse
-     */
     public function __invoke(StoreCategoryRequest $request): JsonResponse
     {
         $response = $this->useCase->execute(

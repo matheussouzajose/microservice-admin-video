@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class FileStorageTest extends TestCase
 {
-
     public function testStore()
     {
         $fakeFile = UploadedFile::fake()->create('video.mp4', 1, 'video/mp4');
@@ -38,5 +37,4 @@ class FileStorageTest extends TestCase
 
         Storage::assertMissing($path);
     }
-
 }

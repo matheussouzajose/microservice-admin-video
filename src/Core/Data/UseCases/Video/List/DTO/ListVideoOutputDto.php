@@ -6,24 +6,6 @@ use Core\Domain\Enum\Rating;
 
 class ListVideoOutputDto
 {
-    /**
-     * @param string $id
-     * @param string $title
-     * @param string $description
-     * @param int $yearLaunched
-     * @param int $duration
-     * @param bool $opened
-     * @param Rating $rating
-     * @param string $createdAt
-     * @param array $categories
-     * @param array $genres
-     * @param array $castMembers
-     * @param string|null $videoFile
-     * @param string|null $trailerFile
-     * @param string|null $thumbFile
-     * @param string|null $thumbHalf
-     * @param string|null $bannerFile
-     */
     public function __construct(
         public string $id,
         public string $title,

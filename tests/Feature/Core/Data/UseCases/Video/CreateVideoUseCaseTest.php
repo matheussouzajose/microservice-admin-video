@@ -2,7 +2,6 @@
 
 namespace Feature\Core\Data\UseCases\Video;
 
-
 use Core\Data\UseCases\Video\Create\CreateVideoUseCase;
 use Core\Data\UseCases\Video\Create\DTO\CreateVideoInputDto;
 use Core\Domain\Enum\Rating;
@@ -18,11 +17,11 @@ class CreateVideoUseCaseTest extends BaseVideoUseCaseTest
         array $categories = [],
         array $genres = [],
         array $castMembers = [],
-        ?array $videoFile = null,
-        ?array $trailerFile = null,
-        ?array $bannerFile = null,
-        ?array $thumbFile = null,
-        ?array $thumbHalf = null,
+        array $videoFile = null,
+        array $trailerFile = null,
+        array $bannerFile = null,
+        array $thumbFile = null,
+        array $thumbHalf = null,
     ): object {
         return new CreateVideoInputDto(
             title: 'test',
@@ -42,4 +41,3 @@ class CreateVideoUseCaseTest extends BaseVideoUseCaseTest
         );
     }
 }
-

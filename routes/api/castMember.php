@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Api\CastMember\CreateCastMemberController;
 use App\Http\Controllers\Api\CastMember\DeleteCastMemberController;
-use App\Http\Controllers\Api\CastMember\PaginateCastMembersController;
 use App\Http\Controllers\Api\CastMember\ListCastMemberController;
+use App\Http\Controllers\Api\CastMember\PaginateCastMembersController;
 use App\Http\Controllers\Api\CastMember\UpdateCastMemberController;
 use Illuminate\Support\Facades\Route;
 

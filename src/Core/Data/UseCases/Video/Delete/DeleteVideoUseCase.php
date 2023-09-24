@@ -8,18 +8,11 @@ use Core\Domain\Repository\VideoRepositoryInterface;
 
 class DeleteVideoUseCase implements DeleteVideoUseCaseInterface
 {
-    /**
-     * @param VideoRepositoryInterface $repository
-     */
     public function __construct(
         private VideoRepositoryInterface $repository,
     ) {
     }
 
-    /**
-     * @param DeleteVideoInputDto $input
-     * @return DeleteVideoOutputDto
-     */
     public function execute(DeleteVideoInputDto $input): DeleteVideoOutputDto
     {
         $deleted = $this->repository->delete($input->id);

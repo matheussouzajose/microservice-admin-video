@@ -11,18 +11,10 @@ use Illuminate\Http\JsonResponse;
 
 class UpdateGenreController extends Controller
 {
-    /**
-     * @param UpdateGenreUseCaseInterface $useCase
-     */
     public function __construct(private readonly UpdateGenreUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param UpdateGenreRequest $request
-     * @param string $id
-     * @return JsonResponse
-     */
     public function __invoke(UpdateGenreRequest $request, string $id): JsonResponse
     {
         $response = $this->useCase->execute(

@@ -12,13 +12,13 @@ class DefaultResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param  Request  $request
-     * @return array|Arrayable|\JsonSerializable
      */
     public function toArray($request): array|\JsonSerializable|Arrayable
     {
         return collect($this->resource)
             ->mapWithKeys(function ($value, $key) {
                 $key = trim(strtolower(preg_replace('/[A-Z]/', '_$0', $key)));
+
                 return [
                     $key => $value,
                 ];

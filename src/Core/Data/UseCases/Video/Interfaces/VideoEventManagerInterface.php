@@ -6,5 +6,4 @@ use Core\Data\UseCases\Interfaces\EventManagerInterface;
 
 interface VideoEventManagerInterface extends EventManagerInterface
 {
-
 }

@@ -16,7 +16,7 @@ class Category extends Model
         'id',
         'name',
         'description',
-        'is_active'
+        'is_active',
     ];
 
     /** @var bool */
@@ -25,23 +25,16 @@ class Category extends Model
     /** @var string[] */
     protected $casts = [
         'id' => 'string',
-        'is_active' =>  'boolean'
+        'is_active' => 'boolean',
     ];
 
-    /**
-     * @return BelongsToMany
-     */
     public function genres(): BelongsToMany
     {
         return $this->belongsToMany(Genre::class);
     }
 
-    /**
-     * @return BelongsToMany
-     */
     public function videos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class);
     }
 }
-

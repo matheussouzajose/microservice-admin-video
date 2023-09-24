@@ -15,17 +15,11 @@ use Core\Domain\ValueObject\Uuid;
 
 class CategoryEloquentRepository implements CategoryRepositoryInterface
 {
-
-    /**
-     * @param Model $model
-     */
     public function __construct(protected Model $model)
     {
     }
 
     /**
-     * @param Entity $entity
-     * @return Entity
      * @throws NotificationException|EntityValidationException
      */
     public function insert(Entity $entity): Entity
@@ -35,15 +29,13 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
             'name' => $entity->name,
             'description' => $entity->description,
             'is_active' => $entity->isActive,
-            'createdAt' => $entity->createdAt()
+            'createdAt' => $entity->createdAt(),
         ]);
 
         return $this->convertObjectToEntity($result);
     }
 
     /**
-     * @param object $data
-     * @return Entity
      * @throws NotificationException
      */
     private function convertObjectToEntity(object $data): Entity
@@ -62,23 +54,17 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
     }
 
     /**
-     * @param string $entityId
-     * @return Entity
      * @throws NotFoundException|EntityValidationException|NotificationException
      */
     public function findById(string $entityId): Entity
     {
-        if (!$result = $this->model->find($entityId)) {
+        if (! $result = $this->model->find($entityId)) {
             throw new NotFoundException("Category {$entityId} not found");
         }
+
         return $this->convertObjectToEntity($result);
     }
 
-    /**
-     * @param string $filter
-     * @param string $order
-     * @return array
-     */
     public function findAll(string $filter = '', string $order = 'DESC'): array
     {
         $result = $this->model->when($filter, function ($query) use ($filter) {
@@ -90,13 +76,6 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
         return $result->toArray();
     }
 
-    /**
-     * @param string $filter
-     * @param string $order
-     * @param int $page
-     * @param int $totalPage
-     * @return PaginationInterface
-     */
     public function paginate(string $filter = '', string $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationInterface
     {
         $result = $this->model->when($filter, function ($query) use ($filter) {
@@ -109,14 +88,12 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
     }
 
     /**
-     * @param Entity $entity
-     * @return Entity
      * @throws NotFoundException
      * @throws EntityValidationException|NotificationException
      */
     public function update(Entity $entity): Entity
     {
-        if (!$result = $this->model->find($entity->id())) {
+        if (! $result = $this->model->find($entity->id())) {
             throw new NotFoundException("Category {$entity->id()} not found");
         }
 
@@ -132,23 +109,17 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
     }
 
     /**
-     * @param string $entityId
-     * @return bool
      * @throws NotFoundException
      */
     public function delete(string $entityId): bool
     {
-        if (!$result = $this->model->find($entityId)) {
+        if (! $result = $this->model->find($entityId)) {
             throw new NotFoundException("Category {$entityId} not found");
         }
 
         return $result->delete();
     }
 
-    /**
-     * @param array $entityIds
-     * @return array
-     */
     public function getIdsByEntitiesIds(array $entityIds = []): array
     {
         return $this->model

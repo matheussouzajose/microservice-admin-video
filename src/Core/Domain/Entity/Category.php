@@ -9,11 +9,6 @@ use Core\Domain\ValueObject\Uuid;
 class Category extends Entity
 {
     /**
-     * @param string $name
-     * @param Uuid|null $id
-     * @param string $description
-     * @param bool $isActive
-     * @param \DateTime|null $createdAt
      * @throws NotificationException
      */
     public function __construct(
@@ -31,26 +26,17 @@ class Category extends Entity
         $this->validate();
     }
 
-    /**
-     * @return void
-     */
     public function activate(): void
     {
         $this->isActive = true;
     }
 
-    /**
-     * @return void
-     */
     public function deactivate(): void
     {
         $this->isActive = false;
     }
 
     /**
-     * @param string $name
-     * @param string $description
-     * @return void
      * @throws NotificationException
      */
     public function update(string $name, string $description = ''): void
@@ -62,7 +48,6 @@ class Category extends Entity
     }
 
     /**
-     * @return void
      * @throws NotificationException
      */
     private function validate(): void
@@ -75,8 +60,8 @@ class Category extends Entity
             );
         }
 
-//        DomainValidation::strMinLength($this->name);
-//        DomainValidation::strMaxLength($this->name);
-//        DomainValidation::strCanNullAndMaxLength($this->description);
+        //        DomainValidation::strMinLength($this->name);
+        //        DomainValidation::strMaxLength($this->name);
+        //        DomainValidation::strCanNullAndMaxLength($this->description);
     }
 }

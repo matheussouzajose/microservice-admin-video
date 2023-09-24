@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Core\Data\UseCases\Category;
 
-
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use Core\Data\UseCases\Category\Update\DTO\UpdateCategoryInputDto;
@@ -31,7 +30,7 @@ class UpdateCategoryUseCaseFeatureTest extends TestCase
         $this->assertEquals($categoryDb->description, $result->description);
 
         $this->assertDatabaseHas('categories', [
-            'name' => 'Updated Name'
+            'name' => 'Updated Name',
         ]);
     }
 }

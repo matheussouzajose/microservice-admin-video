@@ -3,7 +3,6 @@
 namespace Tests\Unit\Core\Data\UseCases\CastMember;
 
 use Core\Data\UseCases\CastMember\Paginate\DTO\PaginateCastMembersInputDto;
-use Core\Data\UseCases\CastMember\Paginate\DTO\PaginateCastMembersOutputDto;
 use Core\Data\UseCases\CastMember\Paginate\PaginateCastMembersUseCase;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;

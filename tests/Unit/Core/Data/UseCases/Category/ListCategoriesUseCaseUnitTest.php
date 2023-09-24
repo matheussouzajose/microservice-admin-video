@@ -3,7 +3,6 @@
 namespace Tests\Unit\Core\Data\UseCases\Category;
 
 use Core\Data\UseCases\Category\Paginate\DTO\PaginateCategoriesInputDto;
-use Core\Data\UseCases\Category\Paginate\DTO\PaginateCategoriesOutputDto;
 use Core\Data\UseCases\Category\Paginate\PaginateCategoriesUseCase;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;
@@ -53,7 +52,7 @@ class ListCategoriesUseCaseUnitTest extends TestCase
         $stdClass->deletedAt = 'createdAt';
 
         $pagination = $this->mockPagination([
-            $stdClass
+            $stdClass,
         ]);
 
         $categoryRepository = \Mockery::mock(\stdClass::class, CategoryRepositoryInterface::class);

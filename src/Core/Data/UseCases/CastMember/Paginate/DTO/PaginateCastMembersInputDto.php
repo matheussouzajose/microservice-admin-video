@@ -4,12 +4,6 @@ namespace Core\Data\UseCases\CastMember\Paginate\DTO;
 
 class PaginateCastMembersInputDto
 {
-    /**
-     * @param string $filter
-     * @param string $order
-     * @param int $page
-     * @param int $totalPerPage
-     */
     public function __construct(
         public string $filter = '',
         public string $order = 'DESC',

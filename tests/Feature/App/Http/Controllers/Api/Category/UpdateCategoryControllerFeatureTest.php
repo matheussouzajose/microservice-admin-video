@@ -38,7 +38,7 @@ class UpdateCategoryControllerFeatureTest extends TestCase
         $request->setJson(new ParameterBag([
             'name' => 'Updated',
         ]));
-        $useCase =  new UpdateCategoryUseCase($this->repository);
+        $useCase = new UpdateCategoryUseCase($this->repository);
         $response = (new UpdateCategoryController($useCase))(
             request: $request,
             id: $category->id

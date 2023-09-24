@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GenreUnitTest extends ModelTestCase
 {
-    /**
-     * @return Model
-     */
     protected function model(): Model
     {
         return new Genre();
@@ -37,7 +34,7 @@ class GenreUnitTest extends ModelTestCase
             'id',
             'name',
             'is_active',
-            'created_at'
+            'created_at',
         ];
     }
 

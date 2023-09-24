@@ -12,7 +12,6 @@ use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
-
 class UpdateCastMemberUseCaseUnitTest extends TestCase
 {
     public function test_update()

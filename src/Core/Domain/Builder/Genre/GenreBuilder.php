@@ -8,7 +8,6 @@ use Core\Domain\Exception\NotificationException;
 
 class GenreBuilder implements GenreBuilderInterface
 {
-    /** @var Entity|null */
     protected ?Entity $entity = null;
 
     public function __construct()
@@ -16,17 +15,12 @@ class GenreBuilder implements GenreBuilderInterface
         $this->reset();
     }
 
-    /**
-     * @return void
-     */
     private function reset(): void
     {
         $this->entity = null;
     }
 
     /**
-     * @param object $input
-     * @return GenreBuilderInterface
      * @throws NotificationException
      */
     public function createEntity(object $input): GenreBuilderInterface
@@ -40,9 +34,6 @@ class GenreBuilder implements GenreBuilderInterface
         return $this;
     }
 
-    /**
-     * @return Entity
-     */
     public function getEntity(): Entity
     {
         return $this->entity;

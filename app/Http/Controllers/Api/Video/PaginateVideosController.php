@@ -11,17 +11,10 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PaginateVideosController extends Controller
 {
-    /**
-     * @param PaginateVideosUseCase $useCase
-     */
-    public function __construct(private readonly  PaginateVideosUseCase $useCase)
+    public function __construct(private readonly PaginateVideosUseCase $useCase)
     {
     }
 
-    /**
-     * @param Request $request
-     * @return AnonymousResourceCollection
-     */
     public function __invoke(Request $request): AnonymousResourceCollection
     {
         $response = $this->useCase->execute(

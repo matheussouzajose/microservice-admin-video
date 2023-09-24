@@ -3,7 +3,7 @@
 use Illuminate\Http\UploadedFile;
 
 if (! function_exists('getArrayFile')) {
-    function getArrayFile(?UploadedFile $file = null): ?array
+    function getArrayFile(UploadedFile $file = null): ?array
     {
         if (! $file) {
             return null;

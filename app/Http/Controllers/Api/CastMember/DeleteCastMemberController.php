@@ -9,17 +9,10 @@ use Illuminate\Http\Response;
 
 class DeleteCastMemberController extends Controller
 {
-    /**
-     * @param DeleteCastMemberUseCaseInterface $useCase
-     */
     public function __construct(private readonly DeleteCastMemberUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param string $id
-     * @return Response
-     */
     public function __invoke(string $id): Response
     {
         $this->useCase->execute(new DeleteCastMemberInputDto(

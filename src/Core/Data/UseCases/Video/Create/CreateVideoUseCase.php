@@ -10,17 +10,12 @@ use Core\Domain\Exception\NotificationException;
 
 class CreateVideoUseCase extends BaseVideoUseCase implements CreateVideoUseCaseInterface
 {
-    /**
-     * @return BuilderVideo
-     */
     protected function getBuilder(): BuilderVideo
     {
         return new BuilderVideo;
     }
 
     /**
-     * @param CreateVideoInputDto $input
-     * @return CreateVideoOutputDto
      * @throws NotificationException
      * @throws \Throwable
      */
@@ -52,9 +47,6 @@ class CreateVideoUseCase extends BaseVideoUseCase implements CreateVideoUseCaseI
         }
     }
 
-    /**
-     * @return CreateVideoOutputDto
-     */
     private function output(): CreateVideoOutputDto
     {
         $entity = $this->builder->getEntity();

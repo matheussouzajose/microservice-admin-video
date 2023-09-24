@@ -11,17 +11,10 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PaginateCategoriesController extends Controller
 {
-    /**
-     * @param PaginateCategoriesUseCaseInterface $useCase
-     */
     public function __construct(private readonly PaginateCategoriesUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param Request $request
-     * @return AnonymousResourceCollection
-     */
     public function __invoke(Request $request): AnonymousResourceCollection
     {
         $response = $this->useCase->execute(

@@ -7,9 +7,5 @@ use Core\Data\UseCases\CastMember\Create\DTO\CreateCastMemberOutputDto;
 
 interface CreateCastMemberUseCaseInterface
 {
-    /**
-     * @param CreateCastMemberInputDto $input
-     * @return CreateCastMemberOutputDto
-     */
     public function execute(CreateCastMemberInputDto $input): CreateCastMemberOutputDto;
 }

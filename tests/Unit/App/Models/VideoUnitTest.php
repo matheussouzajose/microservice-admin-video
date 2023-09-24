@@ -10,9 +10,6 @@ use Tests\Unit\App\Models\ModelTestCase;
 
 class VideoUnitTest extends ModelTestCase
 {
-    /**
-     * @return Model
-     */
     protected function model(): Model
     {
         return new Video();

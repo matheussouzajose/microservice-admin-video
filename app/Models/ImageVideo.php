@@ -31,9 +31,7 @@ class ImageVideo extends Model
         'is_active' => 'boolean',
         'deleted_at' => 'datetime',
     ];
-    /**
-     * @return BelongsTo
-     */
+
     public function videos(): BelongsTo
     {
         return $this->belongsTo(Video::class);

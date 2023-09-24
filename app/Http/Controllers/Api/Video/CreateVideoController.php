@@ -14,16 +14,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CreateVideoController extends Controller
 {
-    /**
-     * @param CreateVideoUseCase $useCase
-     */
     public function __construct(private readonly CreateVideoUseCase $useCase)
     {
     }
 
     /**
-     * @param StoreVideoRequest $request
-     * @return JsonResponse
      * @throws NotificationException
      * @throws \Throwable
      */

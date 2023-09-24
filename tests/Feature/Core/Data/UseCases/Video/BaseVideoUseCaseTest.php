@@ -13,8 +13,8 @@ use Core\Domain\Repository\VideoRepositoryInterface;
 use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
-use Tests\Stubs\VideoEventStub;
 use Tests\Stubs\UploadFilesStub;
+use Tests\Stubs\VideoEventStub;
 use Tests\TestCase;
 
 abstract class BaseVideoUseCaseTest extends TestCase
@@ -25,11 +25,11 @@ abstract class BaseVideoUseCaseTest extends TestCase
         array $categories = [],
         array $genres = [],
         array $castMembers = [],
-        ?array $videoFile = null,
-        ?array $trailerFile = null,
-        ?array $bannerFile = null,
-        ?array $thumbFile = null,
-        ?array $thumbHalf = null,
+        array $videoFile = null,
+        array $trailerFile = null,
+        array $bannerFile = null,
+        array $thumbFile = null,
+        array $thumbHalf = null,
     ): object;
 
     /**
@@ -74,10 +74,10 @@ abstract class BaseVideoUseCaseTest extends TestCase
 
         $this->assertEquals($input->title, $response->title);
         $this->assertEquals($input->description, $response->description);
-//         $this->assertEquals($input->yearLaunched, $response->yearLaunched);
-//         $this->assertEquals($input->duration, $response->duration);
-//         $this->assertEquals($input->opened, $response->opened);
-//         $this->assertEquals($input->rating, $response->rating);
+        //         $this->assertEquals($input->yearLaunched, $response->yearLaunched);
+        //         $this->assertEquals($input->duration, $response->duration);
+        //         $this->assertEquals($input->opened, $response->opened);
+        //         $this->assertEquals($input->rating, $response->rating);
 
         $this->assertCount($categories, $response->categories);
         $this->assertEqualsCanonicalizing($input->categories, $response->categories);

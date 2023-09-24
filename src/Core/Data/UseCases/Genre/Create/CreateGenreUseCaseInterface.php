@@ -7,9 +7,5 @@ use Core\Data\UseCases\Genre\Create\DTO\CreateGenreOutputDto;
 
 interface CreateGenreUseCaseInterface
 {
-    /**
-     * @param CreateGenreInputDto $input
-     * @return CreateGenreOutputDto
-     */
     public function execute(CreateGenreInputDto $input): CreateGenreOutputDto;
 }

@@ -39,6 +39,7 @@ class VideoApiTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider dataProviderPagination
      */
     public function pagination(

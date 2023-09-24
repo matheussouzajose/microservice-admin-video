@@ -9,11 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 trait VideoTrait
 {
-    /**
-     * @param Entity $entity
-     * @param Model $model
-     * @return void
-     */
     public function updateMediaVideo(Entity $entity, Model $model): void
     {
         if ($mediaVideo = $entity->videoFile()) {
@@ -27,11 +22,6 @@ trait VideoTrait
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @param Model $model
-     * @return void
-     */
     public function updateMediaTrailer(Entity $entity, Model $model): void
     {
         if ($trailer = $entity->trailerFile()) {
@@ -45,11 +35,6 @@ trait VideoTrait
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @param Model $model
-     * @return void
-     */
     public function updateImageBanner(Entity $entity, Model $model): void
     {
         if ($banner = $entity->bannerFile()) {
@@ -61,11 +46,6 @@ trait VideoTrait
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @param Model $model
-     * @return void
-     */
     public function updateImageThumb(Entity $entity, Model $model): void
     {
         if ($thumb = $entity->thumbFile()) {
@@ -77,11 +57,6 @@ trait VideoTrait
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @param Model $model
-     * @return void
-     */
     public function updateImageThumbHalf(Entity $entity, Model $model): void
     {
         if ($thumbHalf = $entity->thumbHalf()) {

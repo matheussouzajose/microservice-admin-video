@@ -7,8 +7,6 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use Core\Data\UseCases\Category\Create\CreateCategoryUseCase;
-use Core\Data\UseCases\Category\Create\CreateCategoryUseCaseUseCase;
-use Core\Domain\Exception\EntityValidationException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,14 +19,12 @@ class CreateCategoryControllerFeatureTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = new CategoryEloquentRepository(
-             model: new Category()
+            model: new Category()
         );
 
         parent::setUp();
     }
 
-    /**
-     */
     public function testCreate()
     {
         $useCase = new CreateCategoryUseCase(

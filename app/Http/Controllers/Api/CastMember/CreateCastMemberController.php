@@ -12,17 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CreateCastMemberController extends Controller
 {
-    /**
-     * @param CreateCastMemberUseCaseInterface $useCase
-     */
     public function __construct(private readonly CreateCastMemberUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param StoreCastMemberRequest $request
-     * @return JsonResponse
-     */
     public function __invoke(StoreCastMemberRequest $request): JsonResponse
     {
         $response = $this->useCase->execute(
@@ -33,8 +26,8 @@ class CreateCastMemberController extends Controller
         );
 
         return ApiAdapter::json($response, Response::HTTP_CREATED);
-//        return (new CastMemberResource($response))
-//            ->response()
-//            ->setStatusCode();
+        //        return (new CastMemberResource($response))
+        //            ->response()
+        //            ->setStatusCode();
     }
 }

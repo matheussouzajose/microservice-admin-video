@@ -32,9 +32,6 @@ class MediaVideo extends Model
         'deleted_at' => 'datetime',
     ];
 
-    /**
-     * @return BelongsTo
-     */
     public function videos(): BelongsTo
     {
         return $this->belongsTo(Video::class);

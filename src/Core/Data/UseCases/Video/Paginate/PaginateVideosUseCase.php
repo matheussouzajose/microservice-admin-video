@@ -8,18 +8,11 @@ use Core\Domain\Repository\VideoRepositoryInterface;
 
 class PaginateVideosUseCase implements PaginateVideosUseCaseInterface
 {
-    /**
-     * @param VideoRepositoryInterface $repository
-     */
     public function __construct(
         private VideoRepositoryInterface $repository
     ) {
     }
 
-    /**
-     * @param PaginateVideosInputDto $input
-     * @return PaginationInterface
-     */
     public function execute(PaginateVideosInputDto $input): PaginationInterface
     {
         return $this->repository->paginate(

@@ -15,16 +15,14 @@ use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
 
 class CastMemberEloquentRepository implements CastMemberRepositoryInterface
 {
-    /**
-     * @param Model $model
-     */
     public function __construct(protected Model $model)
     {
     }
 
     /**
-     * @param CastMember $entity
+     * @param  CastMember  $entity
      * @return CastMember
+     *
      * @throws EntityValidationException
      */
     public function insert(Entity $entity): Entity
@@ -40,8 +38,6 @@ class CastMemberEloquentRepository implements CastMemberRepositoryInterface
     }
 
     /**
-     * @param object $data
-     * @return Entity
      * @throws EntityValidationException
      */
     private function convertObjectToEntity(object $data): Entity
@@ -55,24 +51,17 @@ class CastMemberEloquentRepository implements CastMemberRepositoryInterface
     }
 
     /**
-     * @param string $entityId
-     * @return Entity
      * @throws NotFoundException|EntityValidationException
      */
     public function findById(string $entityId): Entity
     {
-        if (!$result = $this->model->find($entityId)) {
+        if (! $result = $this->model->find($entityId)) {
             throw new NotFoundException("Cast Member {$entityId} Not Found");
         }
 
         return $this->convertObjectToEntity($result);
     }
 
-    /**
-     * @param string $filter
-     * @param string $order
-     * @return array
-     */
     public function findAll(string $filter = '', string $order = 'DESC'): array
     {
         $result = $this->model->when($filter, function ($query) use ($filter) {
@@ -84,13 +73,6 @@ class CastMemberEloquentRepository implements CastMemberRepositoryInterface
         return $result->toArray();
     }
 
-    /**
-     * @param string $filter
-     * @param string $order
-     * @param int $page
-     * @param int $totalPage
-     * @return PaginationInterface
-     */
     public function paginate(string $filter = '', string $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationInterface
     {
         $result = $this->model->when($filter, function ($query) use ($filter) {
@@ -103,13 +85,11 @@ class CastMemberEloquentRepository implements CastMemberRepositoryInterface
     }
 
     /**
-     * @param Entity $entity
-     * @return Entity
      * @throws NotFoundException|EntityValidationException
      */
     public function update(Entity $entity): Entity
     {
-        if (!$result = $this->model->find($entity->id())) {
+        if (! $result = $this->model->find($entity->id())) {
             throw new NotFoundException("Cast Member {$entity->id()} Not Found");
         }
 
@@ -124,23 +104,17 @@ class CastMemberEloquentRepository implements CastMemberRepositoryInterface
     }
 
     /**
-     * @param string $entityId
-     * @return bool
      * @throws NotFoundException
      */
     public function delete(string $entityId): bool
     {
-        if (!$result = $this->model->find($entityId)) {
+        if (! $result = $this->model->find($entityId)) {
             throw new NotFoundException("Cast Member {$entityId} Not Found");
         }
 
         return $result->delete();
     }
 
-    /**
-     * @param array $entityIds
-     * @return array
-     */
     public function getIdsByEntitiesIds(array $entityIds = []): array
     {
         return $this->model

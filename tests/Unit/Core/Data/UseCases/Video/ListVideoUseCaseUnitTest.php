@@ -2,9 +2,9 @@
 
 namespace Unit\Core\Data\UseCases\Video;
 
-use Core\Data\UseCases\Video\List\ListVideoUseCase;
 use Core\Data\UseCases\Video\List\DTO\ListVideoInputDto;
 use Core\Data\UseCases\Video\List\DTO\ListVideoOutputDto;
+use Core\Data\UseCases\Video\List\ListVideoUseCase;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\Rating;
 use Core\Domain\Repository\VideoRepositoryInterface;

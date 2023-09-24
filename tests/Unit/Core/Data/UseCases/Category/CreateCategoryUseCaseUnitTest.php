@@ -15,11 +15,11 @@ class CreateCategoryUseCaseUnitTest extends TestCase
 {
     public function testCreateNewCategory()
     {
-        $uuid = (string)RamseyUuid::uuid4();
+        $uuid = (string) RamseyUuid::uuid4();
         $categoryName = 'Category Name';
 
         $category = \Mockery::mock(Category::class, [
-            $categoryName, new Uuid($uuid)
+            $categoryName, new Uuid($uuid),
         ]);
 
         $category->shouldReceive('id')->andReturn($uuid);
@@ -29,7 +29,7 @@ class CreateCategoryUseCaseUnitTest extends TestCase
         $categoryRepository->shouldReceive('insert')->once()->andReturn($category);
 
         $inputDto = \Mockery::mock(CreateCategoryInputDto::class, [
-            $categoryName
+            $categoryName,
         ]);
 
         $createCategoryUseCase = new CreateCategoryUseCase($categoryRepository);
@@ -47,5 +47,4 @@ class CreateCategoryUseCaseUnitTest extends TestCase
 
         parent::tearDown();
     }
-
 }

@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Api\Category\CreateCategoryController;
 use App\Http\Controllers\Api\Category\DeleteCategoryController;
-use App\Http\Controllers\Api\Category\PaginateCategoriesController;
 use App\Http\Controllers\Api\Category\ListCategoryController;
+use App\Http\Controllers\Api\Category\PaginateCategoriesController;
 use App\Http\Controllers\Api\Category\UpdateCategoryController;
 use Illuminate\Support\Facades\Route;
 

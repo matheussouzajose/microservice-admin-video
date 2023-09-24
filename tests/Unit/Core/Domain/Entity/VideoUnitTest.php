@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Core\Domain\Entity;
 
-
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\MediaStatus;
 use Core\Domain\Enum\Rating;

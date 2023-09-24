@@ -41,7 +41,7 @@ class RabbitMQCommand extends Command
             $body = json_decode($message->body);
 
             if (isset($body->Error) && $body->Error === '') {
-                $encodedPath = $body->video->encoded_video_folder . '/stream.mpd';
+                $encodedPath = $body->video->encoded_video_folder.'/stream.mpd';
                 $videoId = $body->video->resource_id;
 
                 $this->useCase->execute(
@@ -58,6 +58,7 @@ class RabbitMQCommand extends Command
             exchange: config('microservices.micro_encoder_go.exchange_producer'),
             callback: $closure
         );
+
         return Command::SUCCESS;
     }
 }

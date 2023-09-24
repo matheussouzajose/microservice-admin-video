@@ -26,7 +26,7 @@ class DeleteCategoryControllerFeatureTest extends TestCase
     {
         $category = Category::factory()->create();
         $useCase = new DeleteCategoryUseCase(
-            categoryRepository:  $this->repository
+            categoryRepository: $this->repository
         );
 
         $response = (new DeleteCategoryController($useCase))(

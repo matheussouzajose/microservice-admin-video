@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Core\Data\UseCases\CastMember\Update;
 
 use Core\Data\UseCases\CastMember\Update\DTO\UpdateCastMemberInputDto;
@@ -10,16 +9,11 @@ use Core\Domain\Repository\CastMemberRepositoryInterface;
 
 class UpdateCastMemberUseCase implements UpdateCastMemberUseCaseInterface
 {
-    /**
-     * @param CastMemberRepositoryInterface $repository
-     */
     public function __construct(protected CastMemberRepositoryInterface $repository)
     {
     }
 
     /**
-     * @param UpdateCastMemberInputDto $input
-     * @return UpdateCastMemberOutputDto
      * @throws EntityValidationException
      */
     public function execute(UpdateCastMemberInputDto $input): UpdateCastMemberOutputDto

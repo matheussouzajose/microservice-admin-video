@@ -15,10 +15,6 @@ class PhpAmqpService implements AMQPInterface
     protected $channel = null;
 
     /**
-     * @param string $queue
-     * @param array $payload
-     * @param string $exchange
-     * @return void
      * @throws \Exception
      */
     public function producer(string $queue, array $payload, string $exchange): void
@@ -37,7 +33,6 @@ class PhpAmqpService implements AMQPInterface
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
     private function connect(): void
@@ -59,9 +54,6 @@ class PhpAmqpService implements AMQPInterface
     }
 
     /**
-     * @param array $payload
-     * @param string $exchange
-     * @return void
      * @throws \Exception
      */
     public function producerFannout(array $payload, string $exchange): void
@@ -87,10 +79,6 @@ class PhpAmqpService implements AMQPInterface
     }
 
     /**
-     * @param string $queue
-     * @param string $exchange
-     * @param \Closure $callback
-     * @return void
      * @throws \Exception
      */
     public function consumer(string $queue, string $exchange, \Closure $callback): void
@@ -122,17 +110,11 @@ class PhpAmqpService implements AMQPInterface
         $this->closeConnection();
     }
 
-    /**
-     * @return void
-     */
     private function closeChannel(): void
     {
         $this->channel->close();
     }
 
-    /**
-     * @return void
-     */
     private function closeConnection(): void
     {
         $this->connection->close();

@@ -2,7 +2,6 @@
 
 namespace Core\Domain\Builder\Video;
 
-use Core\Domain\Entity\Entity;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\MediaStatus;
 use Core\Domain\Exception\NotificationException;
@@ -11,7 +10,6 @@ use Core\Domain\ValueObject\Media;
 
 class BuilderVideo implements BuilderVideoInterface
 {
-    /** @var Video|null */
     protected ?Video $entity = null;
 
     public function __construct()
@@ -19,17 +17,12 @@ class BuilderVideo implements BuilderVideoInterface
         $this->reset();
     }
 
-    /**
-     * @return void
-     */
     private function reset(): void
     {
         $this->entity = null;
     }
 
     /**
-     * @param object $input
-     * @return BuilderVideoInterface
      * @throws NotificationException
      */
     public function createEntity(object $input): BuilderVideoInterface
@@ -48,10 +41,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @param object $input
-     * @return void
-     */
     public function addIds(object $input): void
     {
         foreach ($input->categories as $categoryId) {
@@ -67,12 +56,6 @@ class BuilderVideo implements BuilderVideoInterface
         }
     }
 
-    /**
-     * @param string $path
-     * @param MediaStatus $mediaStatus
-     * @param string $encodedPath
-     * @return BuilderVideoInterface
-     */
     public function addMediaVideo(string $path, MediaStatus $mediaStatus, string $encodedPath = ''): BuilderVideoInterface
     {
         $media = new Media(
@@ -85,10 +68,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @param string $path
-     * @return BuilderVideoInterface
-     */
     public function addThumb(string $path): BuilderVideoInterface
     {
         $this->entity->setThumbFile(new Image(
@@ -98,10 +77,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @param string $path
-     * @return BuilderVideoInterface
-     */
     public function addThumbHalf(string $path): BuilderVideoInterface
     {
         $this->entity->setThumbHalf(new Image(
@@ -111,10 +86,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @param string $path
-     * @return BuilderVideoInterface
-     */
     public function addBanner(string $path): BuilderVideoInterface
     {
         $this->entity->setBannerFile(new Image(
@@ -124,10 +95,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @param string $path
-     * @return BuilderVideoInterface
-     */
     public function addTrailer(string $path): BuilderVideoInterface
     {
         $media = new Media(
@@ -139,9 +106,6 @@ class BuilderVideo implements BuilderVideoInterface
         return $this;
     }
 
-    /**
-     * @return Video
-     */
     public function getEntity(): Video
     {
         return $this->entity;

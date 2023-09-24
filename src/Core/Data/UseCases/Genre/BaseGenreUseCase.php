@@ -10,16 +10,8 @@ use Core\Domain\Repository\GenreRepositoryInterface;
 
 abstract class BaseGenreUseCase
 {
-    /**
-     * @var GenreBuilderInterface
-     */
     protected GenreBuilderInterface $builder;
 
-    /**
-     * @param GenreRepositoryInterface $repository
-     * @param TransactionInterface $transaction
-     * @param CategoryRepositoryInterface $categoryRepository
-     */
     public function __construct(
         protected GenreRepositoryInterface $repository,
         protected TransactionInterface $transaction,
@@ -28,9 +20,6 @@ abstract class BaseGenreUseCase
         $this->builder = $this->getBuilder();
     }
 
-    /**
-     * @return GenreBuilderInterface
-     */
     abstract protected function getBuilder(): GenreBuilderInterface;
 
     /**
@@ -49,7 +38,7 @@ abstract class BaseGenreUseCase
     /**
      * @throws NotFoundException
      */
-    protected function validateIds(array $ids, $repository, string $singularLabel, ?string $pluralLabel = null): void
+    protected function validateIds(array $ids, $repository, string $singularLabel, string $pluralLabel = null): void
     {
         $idsDb = $repository->getIdsByEntitiesIds($ids);
 

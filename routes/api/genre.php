@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Api\Genre\CreateGenreController;
 use App\Http\Controllers\Api\Genre\DeleteGenreController;
-use App\Http\Controllers\Api\Genre\PaginateGenresController;
 use App\Http\Controllers\Api\Genre\ListGenreController;
+use App\Http\Controllers\Api\Genre\PaginateGenresController;
 use App\Http\Controllers\Api\Genre\UpdateGenreController;
 use Illuminate\Support\Facades\Route;
 

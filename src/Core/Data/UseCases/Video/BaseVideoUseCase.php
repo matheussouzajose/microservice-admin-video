@@ -16,18 +16,8 @@ use Core\Domain\Repository\VideoRepositoryInterface;
 
 abstract class BaseVideoUseCase
 {
-    /** @var BuilderVideo */
     protected BuilderVideo $builder;
 
-    /**
-     * @param VideoRepositoryInterface $repository
-     * @param TransactionInterface $transaction
-     * @param FileStorageInterface $storage
-     * @param VideoEventManagerInterface $eventManager
-     * @param CategoryRepositoryInterface $categoryRepository
-     * @param GenreRepositoryInterface $genreRepository
-     * @param CastMemberRepositoryInterface $castMemberRepository
-     */
     public function __construct(
         protected VideoRepositoryInterface $repository,
         protected TransactionInterface $transaction,
@@ -42,15 +32,8 @@ abstract class BaseVideoUseCase
         $this->builder = $this->getBuilder();
     }
 
-    /**
-     * @return BuilderVideo
-     */
     abstract protected function getBuilder(): BuilderVideo;
 
-    /**
-     * @param object $input
-     * @return void
-     */
     protected function storageFiles(object $input): void
     {
         $entity = $this->builder->getEntity();
@@ -78,17 +61,12 @@ abstract class BaseVideoUseCase
         }
     }
 
-    /**
-     * @param string $path
-     * @param array|null $media
-     * @return string|null
-     */
-    private function storageFile(string $path, ?array $media = null): ?string
+    private function storageFile(string $path, array $media = null): ?string
     {
         if ($media) {
             return $this->storage->store(
                 path: $path,
-                file:$media
+                file: $media
             );
         }
 
@@ -123,7 +101,7 @@ abstract class BaseVideoUseCase
     /**
      * @throws NotFoundException
      */
-    protected function validateIds(array $ids, $repository, string $singularLabel, ?string $pluralLabel = null): void
+    protected function validateIds(array $ids, $repository, string $singularLabel, string $pluralLabel = null): void
     {
         $idsDb = $repository->getIdsByEntitiesIds($ids);
 

@@ -10,17 +10,10 @@ use Illuminate\Http\JsonResponse;
 
 class ListGenreController extends Controller
 {
-    /**
-     * @param ListGenreUseCaseInterface $useCase
-     */
     public function __construct(private readonly ListGenreUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param string $id
-     * @return JsonResponse
-     */
     public function __invoke(string $id): JsonResponse
     {
         $response = $this->useCase->execute(

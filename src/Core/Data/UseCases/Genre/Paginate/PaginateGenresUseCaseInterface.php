@@ -7,9 +7,5 @@ use Core\Domain\Repository\PaginationInterface;
 
 interface PaginateGenresUseCaseInterface
 {
-    /**
-     * @param PaginateGenresInputDto $input
-     * @return PaginationInterface
-     */
     public function execute(PaginateGenresInputDto $input): PaginationInterface;
 }

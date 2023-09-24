@@ -1,6 +1,7 @@
 <?php
 
 namespace Core\Data\UseCases\Video\Create;
+
 use Core\Data\UseCases\Video\Create\DTO\CreateVideoInputDto;
 use Core\Data\UseCases\Video\Create\DTO\CreateVideoOutputDto;
 

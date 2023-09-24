@@ -12,24 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CreateGenreController extends Controller
 {
-    /**
-     * @param CreateGenreUseCaseInterface $useCase
-     */
     public function __construct(private readonly CreateGenreUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param StoreGenreRequest $request
-     * @return JsonResponse
-     */
     public function __invoke(StoreGenreRequest $request): JsonResponse
     {
         $response = $this->useCase->execute(
             input: new CreateGenreInputDto(
                 name: $request->name,
                 categoriesId: $request->categories_ids,
-                isActive: (bool)$request->is_active
+                isActive: (bool) $request->is_active
             )
         );
 

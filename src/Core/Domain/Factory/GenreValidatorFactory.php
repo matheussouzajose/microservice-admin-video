@@ -7,9 +7,6 @@ use Core\Domain\Validation\ValidatorInterface;
 
 class GenreValidatorFactory
 {
-    /**
-     * @return ValidatorInterface
-     */
     public static function create(): ValidatorInterface
     {
         return new GenreRakitValidator();

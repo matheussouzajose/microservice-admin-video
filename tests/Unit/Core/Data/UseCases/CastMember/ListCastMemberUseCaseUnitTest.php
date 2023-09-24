@@ -2,8 +2,6 @@
 
 namespace Tests\Unit\Core\Data\UseCases\CastMember;
 
-use Core\Data\UseCases\CastMember\DTO\CastMemberInputDto;
-use Core\Data\UseCases\CastMember\DTO\CastMemberOutputDto;
 use Core\Data\UseCases\CastMember\List\DTO\ListCastMemberInputDto;
 use Core\Data\UseCases\CastMember\List\DTO\ListCastMemberOutputDto;
 use Core\Data\UseCases\CastMember\List\ListCastMemberUseCase;

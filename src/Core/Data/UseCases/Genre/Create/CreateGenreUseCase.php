@@ -13,8 +13,6 @@ use Core\Domain\Exception\NotFoundException;
 class CreateGenreUseCase extends BaseGenreUseCase implements CreateGenreUseCaseInterface
 {
     /**
-     * @param CreateGenreInputDto $input
-     * @return CreateGenreOutputDto
      * @throws NotFoundException
      * @throws EntityValidationException
      * @throws \Throwable
@@ -31,7 +29,7 @@ class CreateGenreUseCase extends BaseGenreUseCase implements CreateGenreUseCaseI
             $this->transaction->commit();
 
             return new CreateGenreOutputDto(
-                id: (string)$genreDb->id,
+                id: (string) $genreDb->id,
                 name: $genreDb->name,
                 is_active: $genreDb->isActive,
                 created_at: $genreDb->createdAt(),
@@ -42,9 +40,6 @@ class CreateGenreUseCase extends BaseGenreUseCase implements CreateGenreUseCaseI
         }
     }
 
-    /**
-     * @return GenreBuilderInterface
-     */
     protected function getBuilder(): GenreBuilderInterface
     {
         return new GenreBuilder();

@@ -7,9 +7,5 @@ use Core\Data\UseCases\Category\Delete\DTO\DeleteCategoryOutputDto;
 
 interface DeleteCategoryUseCaseInterface
 {
-    /**
-     * @param DeleteCategoryInputDto $input
-     * @return DeleteCategoryOutputDto
-     */
     public function execute(DeleteCategoryInputDto $input): DeleteCategoryOutputDto;
 }

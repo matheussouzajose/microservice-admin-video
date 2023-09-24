@@ -11,18 +11,10 @@ use Illuminate\Http\JsonResponse;
 
 class UpdateCastMemberController extends Controller
 {
-    /**
-     * @param UpdateCastMemberUseCaseInterface $useCase
-     */
     public function __construct(private readonly UpdateCastMemberUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param UpdateCastMemberRequest $request
-     * @param $id
-     * @return JsonResponse
-     */
     public function __invoke(UpdateCastMemberRequest $request, $id): JsonResponse
     {
         $response = $this->useCase->execute(

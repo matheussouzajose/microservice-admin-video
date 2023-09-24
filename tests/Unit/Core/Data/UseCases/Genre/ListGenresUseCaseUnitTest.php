@@ -3,7 +3,6 @@
 namespace Tests\Unit\Core\Data\UseCases\Genre;
 
 use Core\Data\UseCases\Genre\Paginate\DTO\PaginateGenresInputDto;
-use Core\Data\UseCases\Genre\Paginate\DTO\PaginateGenresOutputDto;
 use Core\Data\UseCases\Genre\Paginate\PaginateGenresUseCase;
 use Core\Domain\Repository\GenreRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;

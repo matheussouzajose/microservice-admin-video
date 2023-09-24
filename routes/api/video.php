@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Api\Video\CreateVideoController;
 use App\Http\Controllers\Api\Video\DeleteVideoController;
-use App\Http\Controllers\Api\Video\PaginateVideosController;
 use App\Http\Controllers\Api\Video\ListVideoController;
+use App\Http\Controllers\Api\Video\PaginateVideosController;
 use App\Http\Controllers\Api\Video\UpdateVideoController;
 use Illuminate\Support\Facades\Route;
 

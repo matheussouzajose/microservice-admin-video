@@ -7,9 +7,5 @@ use Core\Domain\Repository\PaginationInterface;
 
 interface PaginateCastMembersUseCaseInterface
 {
-    /**
-     * @param PaginateCastMembersInputDto $input
-     * @return PaginationInterface
-     */
     public function execute(PaginateCastMembersInputDto $input): PaginationInterface;
 }

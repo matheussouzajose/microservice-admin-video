@@ -20,7 +20,7 @@ class UpdateCategoryUseCaseUnitTest extends TestCase
         $categoryDesc = 'Category Description';
 
         $category = \Mockery::mock(Category::class, [
-            $categoryName, new Uuid($uuid), $categoryDesc
+            $categoryName, new Uuid($uuid), $categoryDesc,
         ]);
 
         $category->shouldReceive('update');
@@ -31,7 +31,7 @@ class UpdateCategoryUseCaseUnitTest extends TestCase
         $categoryRepository->shouldReceive('update')->once()->andReturn($category);
 
         $inputDto = \Mockery::mock(UpdateCategoryInputDto::class, [
-            $uuid, 'New Name'
+            $uuid, 'New Name',
         ]);
 
         $updateCategoryUseCase = new UpdateCategoryUseCase($categoryRepository);
@@ -46,5 +46,4 @@ class UpdateCategoryUseCaseUnitTest extends TestCase
 
         parent::tearDown();
     }
-
 }

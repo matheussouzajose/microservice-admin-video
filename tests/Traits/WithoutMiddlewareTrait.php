@@ -15,7 +15,7 @@ trait WithoutMiddlewareTrait
         $this->withoutMiddleware([
             Authenticate::class,
             Authorize::class,
-            ThrottleRequests::class
+            ThrottleRequests::class,
         ]);
     }
 }

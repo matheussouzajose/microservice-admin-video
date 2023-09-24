@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Core\Data\UseCases\Category;
 
-
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use Core\Data\UseCases\Category\Delete\DeleteCategoryUseCase;

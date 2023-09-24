@@ -12,25 +12,18 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PaginateGenresController extends Controller
 {
-    /**
-     * @param PaginateGenresUseCaseInterface $useCase
-     */
     public function __construct(private readonly PaginateGenresUseCaseInterface $useCase)
     {
     }
 
-    /**
-     * @param Request $request
-     * @return AnonymousResourceCollection
-     */
     public function __invoke(Request $request): AnonymousResourceCollection
     {
         $response = $this->useCase->execute(
             input: new PaginateGenresInputDto(
-                filter: (string)$request->get('filter', ''),
-                order: (string)$request->get('order', 'DESC'),
-                page: (int)$request->get('page', 1),
-                totalPage: (int)$request->get('total_page', 15),
+                filter: (string) $request->get('filter', ''),
+                order: (string) $request->get('order', 'DESC'),
+                page: (int) $request->get('page', 1),
+                totalPage: (int) $request->get('total_page', 15),
             )
         );
 

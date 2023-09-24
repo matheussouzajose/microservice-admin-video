@@ -10,17 +10,12 @@ use Core\Domain\Repository\CategoryRepositoryInterface;
 
 class CreateCategoryUseCase implements CreateCategoryUseCaseInterface
 {
-    /**
-     * @param CategoryRepositoryInterface $categoryRepository
-     */
     public function __construct(
         protected CategoryRepositoryInterface $categoryRepository
     ) {
     }
 
     /**
-     * @param CreateCategoryInputDto $input
-     * @return CreateCategoryOutputDto
      * @throws NotificationException
      */
     public function execute(CreateCategoryInputDto $input): CreateCategoryOutputDto

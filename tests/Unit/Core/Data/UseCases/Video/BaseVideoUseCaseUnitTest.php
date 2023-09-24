@@ -26,11 +26,11 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
         array $categoriesIds = [],
         array $genresIds = [],
         array $castMembersIds = [],
-        ?array $videoFile = null,
-        ?array $trailerFile = null,
-        ?array $thumbFile = null,
-        ?array $thumbHalf = null,
-        ?array $bannerFile = null,
+        array $videoFile = null,
+        array $trailerFile = null,
+        array $thumbFile = null,
+        array $thumbHalf = null,
+        array $bannerFile = null,
     );
 
     protected function createUseCase(
@@ -43,8 +43,7 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
         int $timesCallMethodStoreFileStorage = 0,
 
         int $timesCallMethodDispatchEventManager = 0
-    ): void
-    {
+    ): void {
         $this->useCase = new ($this->getUseCase())(
             repository: $this->createMockRepository(
                 timesCallAction: $timesCallMethodActionRepository,

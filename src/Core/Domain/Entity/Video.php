@@ -11,30 +11,14 @@ use Core\Domain\ValueObject\Uuid;
 
 class Video extends Entity
 {
-    /**@var array */
+    /** @var array */
     protected array $categoriesId = [];
 
-    /** @var array */
     protected array $genresId = [];
 
-    /** @var array */
     protected array $castMemberIds = [];
 
     /**
-     * @param string $title
-     * @param string $description
-     * @param int $yearLaunched
-     * @param int $duration
-     * @param bool $opened
-     * @param Rating $rating
-     * @param Uuid|null $id
-     * @param bool $published
-     * @param \DateTime|null $createdAt
-     * @param Image|null $thumbFile
-     * @param Image|null $thumbHalf
-     * @param Image|null $bannerFile
-     * @param Media|null $trailerFile
-     * @param Media|null $videoFile
      * @throws NotificationException
      */
     public function __construct(
@@ -72,80 +56,46 @@ class Video extends Entity
         $this->validation();
     }
 
-    /**
-     * @param string $categoryId
-     * @return void
-     */
     public function addCategoryId(string $categoryId): void
     {
         $this->categoriesId[] = $categoryId;
     }
 
-    /**
-     * @param string $categoryId
-     * @return void
-     */
     public function removeCategoryId(string $categoryId): void
     {
         unset($this->categoriesId[array_search($categoryId, $this->categoriesId)]);
     }
 
-    /**
-     * @param string $genreId
-     * @return void
-     */
     public function addGenre(string $genreId): void
     {
         $this->genresId[] = $genreId;
     }
 
-    /**
-     * @param string $genreId
-     * @return void
-     */
     public function removeGenre(string $genreId): void
     {
         unset($this->genresId[array_search($genreId, $this->genresId)]);
     }
 
-    /**
-     * @param string $castMemberId
-     * @return void
-     */
     public function addCastMember(string $castMemberId): void
     {
         $this->castMemberIds[] = $castMemberId;
     }
 
-    /**
-     * @param string $castMemberId
-     * @return void
-     */
     public function removeCastMember(string $castMemberId): void
     {
         unset($this->castMemberIds[array_search($castMemberId, $this->castMemberIds)]);
     }
 
-    /**
-     * @return Image|null
-     */
     public function thumbFile(): ?Image
     {
         return $this->thumbFile;
     }
 
-    /**
-     * @param Image $thumbFile
-     * @return void
-     */
     public function setThumbFile(Image $thumbFile): void
     {
         $this->thumbFile = $thumbFile;
     }
 
-    /**
-     * @return Image|null
-     */
     public function thumbHalf(): ?Image
     {
         return $this->thumbHalf;

@@ -4,12 +4,8 @@ namespace Core\Domain\Notification;
 
 class Notification
 {
-    /** @var array */
     private array $errors = [];
 
-    /**
-     * @return array
-     */
     public function getErrors(): array
     {
         return $this->errors;
@@ -23,18 +19,11 @@ class Notification
         $this->errors[] = $error;
     }
 
-    /**
-     * @return bool
-     */
     public function hasErrors(): bool
     {
         return count($this->errors) > 0;
     }
 
-    /**
-     * @param string $context
-     * @return string
-     */
     public function messages(string $context = ''): string
     {
         $messages = '';

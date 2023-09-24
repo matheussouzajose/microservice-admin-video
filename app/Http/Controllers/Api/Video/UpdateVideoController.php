@@ -12,17 +12,11 @@ use Illuminate\Http\JsonResponse;
 
 class UpdateVideoController extends Controller
 {
-    /**
-     * @param UpdateVideoUseCase $useCase
-     */
-    public function __construct(private readonly  UpdateVideoUseCase $useCase)
+    public function __construct(private readonly UpdateVideoUseCase $useCase)
     {
     }
 
     /**
-     * @param UpdateVideoRequest $request
-     * @param $id
-     * @return JsonResponse
      * @throws NotificationException
      * @throws \Throwable
      */

@@ -12,8 +12,6 @@ use Core\Domain\Exception\EntityValidationException;
 class UpdateGenreUseCase extends BaseGenreUseCase implements UpdateGenreUseCaseInterface
 {
     /**
-     * @param UpdateGenreInputDto $input
-     * @return UpdateGenreOutputDto
      * @throws EntityValidationException
      * @throws \Throwable
      */
@@ -46,9 +44,6 @@ class UpdateGenreUseCase extends BaseGenreUseCase implements UpdateGenreUseCaseI
         }
     }
 
-    /**
-     * @return GenreBuilderInterface
-     */
     protected function getBuilder(): GenreBuilderInterface
     {
         return new UpdateGenreBuilder();

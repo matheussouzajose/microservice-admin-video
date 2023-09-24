@@ -7,10 +7,6 @@ use Rakit\Validation\Validator;
 
 class VideoRakitValidator implements ValidatorInterface
 {
-    /**
-     * @param Entity $entity
-     * @return void
-     */
     public function validate(Entity $entity): void
     {
         $data = $this->convertEntityForArray($entity);
@@ -32,10 +28,6 @@ class VideoRakitValidator implements ValidatorInterface
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @return array
-     */
     private function convertEntityForArray(Entity $entity): array
     {
         return [

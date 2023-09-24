@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Core\Data\UseCases\Category;
 
-
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use Core\Data\UseCases\Category\Create\CreateCategoryUseCase;
@@ -27,7 +26,7 @@ class CreateCategoryUseCaseFeatureTest extends TestCase
         $this->assertNotEmpty($responseUseCase->id);
 
         $this->assertDatabaseHas('categories', [
-            'id' => $responseUseCase->id
+            'id' => $responseUseCase->id,
         ]);
     }
 }

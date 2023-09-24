@@ -7,10 +7,6 @@ use Rakit\Validation\Validator;
 
 class GenreRakitValidator implements ValidatorInterface
 {
-    /**
-     * @param Entity $entity
-     * @return void
-     */
     public function validate(Entity $entity): void
     {
         $data = $this->convertEntityForArray($entity);
@@ -30,10 +26,6 @@ class GenreRakitValidator implements ValidatorInterface
         }
     }
 
-    /**
-     * @param Entity $entity
-     * @return array
-     */
     private function convertEntityForArray(Entity $entity): array
     {
         return [

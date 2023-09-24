@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +23,6 @@ Route::prefix('v1')->middleware(['auth:api', 'can:admin-catalog'])->group(functi
     Route::group([], base_path('routes/api/castMember.php'));
     Route::group([], base_path('routes/api/video.php'));
 });
-
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);

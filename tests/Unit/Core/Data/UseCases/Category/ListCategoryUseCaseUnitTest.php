@@ -20,7 +20,7 @@ class ListCategoryUseCaseUnitTest extends TestCase
         $categoryCreatedAt = '2023-01-01 12:00:00';
 
         $category = \Mockery::mock(Category::class, [
-            $categoryName, new Uuid($uuid)
+            $categoryName, new Uuid($uuid),
         ]);
 
         $category->shouldReceive('id')->andReturn($uuid);
@@ -30,7 +30,7 @@ class ListCategoryUseCaseUnitTest extends TestCase
         $categoryRepository->shouldReceive('findById')->andReturn($category);
 
         $inputDto = \Mockery::mock(ListCategoryInputDto::class, [
-            $uuid
+            $uuid,
         ]);
 
         $listCategoryUseCase = new ListCategoryUseCase($categoryRepository);
@@ -49,5 +49,4 @@ class ListCategoryUseCaseUnitTest extends TestCase
 
         parent::tearDown();
     }
-
 }

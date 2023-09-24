@@ -8,18 +8,11 @@ use Core\Domain\Repository\CategoryRepositoryInterface;
 
 class DeleteCategoryUseCase implements DeleteCategoryUseCaseInterface
 {
-    /**
-     * @param CategoryRepositoryInterface $categoryRepository
-     */
     public function __construct(
         private CategoryRepositoryInterface $categoryRepository
     ) {
     }
 
-    /**
-     * @param DeleteCategoryInputDto $input
-     * @return DeleteCategoryOutputDto
-     */
     public function execute(DeleteCategoryInputDto $input): DeleteCategoryOutputDto
     {
         $responseDelete = $this->categoryRepository->delete($input->id);

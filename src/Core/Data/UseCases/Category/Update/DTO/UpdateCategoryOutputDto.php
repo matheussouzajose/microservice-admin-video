@@ -4,13 +4,6 @@ namespace Core\Data\UseCases\Category\Update\DTO;
 
 class UpdateCategoryOutputDto
 {
-    /**
-     * @param string $id
-     * @param string $name
-     * @param string $description
-     * @param bool $is_active
-     * @param string $created_at
-     */
     public function __construct(
         public string $id,
         public string $name,

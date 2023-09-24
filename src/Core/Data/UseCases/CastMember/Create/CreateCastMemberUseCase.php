@@ -11,17 +11,11 @@ use Core\Domain\Repository\CastMemberRepositoryInterface;
 
 class CreateCastMemberUseCase implements CreateCastMemberUseCaseInterface
 {
-
-    /**
-     * @param CastMemberRepositoryInterface $repository
-     */
     public function __construct(protected CastMemberRepositoryInterface $repository)
     {
     }
 
     /**
-     * @param CreateCastMemberInputDto $input
-     * @return CreateCastMemberOutputDto
      * @throws EntityValidationException
      */
     public function execute(CreateCastMemberInputDto $input): CreateCastMemberOutputDto

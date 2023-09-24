@@ -11,11 +11,6 @@ class UploadFilesStub implements FileStorageInterface
         event($this);
     }
 
-    /**
-     * @param string $path
-     * @param array $file
-     * @return string
-     */
     public function store(string $path, array $file): string
     {
         return "{$path}/test.mp4";
@@ -26,4 +21,3 @@ class UploadFilesStub implements FileStorageInterface
         //
     }
 }
-
