@@ -79,3 +79,5 @@ php artisan key:generate
 
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)
+
+echo "teste22" | nc -u -w0 127.0.0.1 4718
