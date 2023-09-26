@@ -7,6 +7,7 @@ use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Exception\NotificationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
+use KeycloakGuard\Exceptions\TokenException;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -57,6 +58,10 @@ class Handler extends ExceptionHandler
         if ($e instanceof NotificationException) {
             return $this->showError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
         } // ok => HTTP_INTERNAL_SERVER_ERROR
+
+        if ($e instanceof TokenException) {
+            return $this->showError($e->getMessage(), Response::HTTP_FORBIDDEN);
+        }
 
         return parent::render($request, $e);
     }

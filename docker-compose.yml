@@ -21,7 +21,7 @@ services:
         depends_on:
             - db
             - redis
-        working_dir: /var/www/html
+        working_dir: /var/www
         entrypoint: [ 'php', '/var/www/artisan', 'rabbitmq:consumer' ]
         networks:
             - app-network
@@ -79,15 +79,15 @@ services:
         networks:
             - app-network
 
-    keycloak:
-        image: jboss/keycloak:16.1.1
-        environment:
-            - KEYCLOAK_USER=admin
-            - KEYCLOAK_PASSWORD=admin
-        ports:
-            - "8080:8080"
-        networks:
-            - app-network
+#    keycloak:
+#        image: jboss/keycloak:16.1.1
+#        environment:
+#            - KEYCLOAK_USER=admin
+#            - KEYCLOAK_PASSWORD=admin
+#        ports:
+#            - "8080:8080"
+#        networks:
+#            - app-network
 #        command:
 #            - -b
 #            - 0.0.0.0
