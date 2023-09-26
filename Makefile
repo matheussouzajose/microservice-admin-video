@@ -1,4 +1,4 @@
-DOCKER_COMPOSE_FILE := docker-compose.yml keycloak/docker-compose.yaml
+DOCKER_COMPOSE_FILE := docker-compose.yml keycloak/docker-compose.yaml elk/docker-compose.yaml
 
 DOCKER_COMPOSE := docker compose -f
 
@@ -16,6 +16,10 @@ help:
 	@echo "  ps             Lista os contêineres em execução"
 	@echo "  help           Exibe esta mensagem de ajuda"
 
+build:
+	@for file in $(DOCKER_COMPOSE_FILE); do \
+		${DOCKER_COMPOSE} $${file} up -d --build; \
+	done
 up:
 	@for file in $(DOCKER_COMPOSE_FILE); do \
     	${DOCKER_COMPOSE} $${file} up -d; \
@@ -44,7 +48,7 @@ ps:
 		${DOCKER_COMPOSE} $${file} ps; \
 	done
 
-test:
+laravel:
 	$(DOCKER_COMPOSE) docker-compose.yml exec app bash
 
 .PHONY: help up down restart logs exec p

@@ -11,7 +11,6 @@ use Core\Domain\ValueObject\Uuid;
 
 class Video extends Entity
 {
-    /** @var array */
     protected array $categoriesId = [];
 
     protected array $genresId = [];

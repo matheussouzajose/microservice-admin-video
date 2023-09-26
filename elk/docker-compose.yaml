@@ -15,6 +15,8 @@ services:
       - '9300:9300'
     networks:
       - elk
+#    extra_hosts:
+#      - "host.docker.internal:172.17.0.1"
 
   logstash:
     image: logstash:7.16.2
@@ -33,6 +35,8 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
+#    extra_hosts:
+#      - "host.docker.internal:172.18.0.1"
 
   kibana:
     image: kibana:7.16.2
