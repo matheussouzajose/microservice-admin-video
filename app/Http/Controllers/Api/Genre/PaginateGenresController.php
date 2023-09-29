@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Genre;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\GenreResource;
-use Core\Data\UseCases\Genre\Paginate\DTO\PaginateGenresInputDto;
-use Core\Data\UseCases\Genre\Paginate\PaginateGenresUseCaseInterface;
+use Core\Application\UseCases\Genre\Paginate\DTO\PaginateGenresInputDto;
+use Core\Application\UseCases\Genre\Paginate\PaginateGenresUseCaseInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

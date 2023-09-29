@@ -7,7 +7,7 @@ use App\Repositories\Eloquent\CategoryEloquentRepository;
 use App\Repositories\Eloquent\GenreEloquentRepository;
 use App\Repositories\Eloquent\VideoEloquentRepository;
 use App\Repositories\Transaction\DBTransaction;
-use Core\Data\UseCases\Interfaces\TransactionInterface;
+use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;

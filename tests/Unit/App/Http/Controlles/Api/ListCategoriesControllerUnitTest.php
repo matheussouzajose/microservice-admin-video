@@ -3,7 +3,7 @@
 namespace Tests\Unit\App\Http\Controlles\Api;
 
 use App\Http\Controllers\Api\Category\PaginateCategoriesController;
-use Core\Data\UseCases\Category\Paginate\PaginateCategoriesUseCase;
+use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCase;
 use Core\Domain\Repository\PaginationInterface;
 use Illuminate\Http\Request;
 use Tests\TestCase;

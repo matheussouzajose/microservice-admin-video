@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\CastMember;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Data\UseCases\CastMember\List\DTO\ListCastMemberInputDto;
-use Core\Data\UseCases\CastMember\List\ListCastMemberUseCaseInterface;
+use Core\Application\UseCases\CastMember\List\DTO\ListCastMemberInputDto;
+use Core\Application\UseCases\CastMember\List\ListCastMemberUseCaseInterface;
 use Illuminate\Http\JsonResponse;
 
 class ListCastMemberController extends Controller

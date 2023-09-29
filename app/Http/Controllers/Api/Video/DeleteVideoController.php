@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Video;
 
 use App\Http\Controllers\Controller;
-use Core\Data\UseCases\Video\Delete\DeleteVideoUseCase;
-use Core\Data\UseCases\Video\Delete\DTO\DeleteVideoInputDto;
+use Core\Application\UseCases\Video\Delete\DeleteVideoUseCase;
+use Core\Application\UseCases\Video\Delete\DTO\DeleteVideoInputDto;
 use Illuminate\Http\Response;
 
 class DeleteVideoController extends Controller

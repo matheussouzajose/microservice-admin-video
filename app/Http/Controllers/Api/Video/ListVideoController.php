@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Video;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VideoResource;
-use Core\Data\UseCases\Video\List\DTO\ListVideoInputDto;
-use Core\Data\UseCases\Video\List\ListVideoUseCase;
+use Core\Application\UseCases\Video\List\DTO\ListVideoInputDto;
+use Core\Application\UseCases\Video\List\ListVideoUseCase;
 use Illuminate\Http\JsonResponse;
 
 class ListVideoController extends Controller

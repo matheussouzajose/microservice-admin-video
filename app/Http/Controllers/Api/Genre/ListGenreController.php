@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Genre;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Data\UseCases\Genre\List\DTO\ListGenreInputDto;
-use Core\Data\UseCases\Genre\List\ListGenreUseCaseInterface;
+use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
+use Core\Application\UseCases\Genre\List\ListGenreUseCaseInterface;
 use Illuminate\Http\JsonResponse;
 
 class ListGenreController extends Controller
