@@ -5,7 +5,7 @@ namespace Tests\Feature\App\Http\Controllers\Api\Category;
 use App\Http\Controllers\Api\Category\PaginateCategoriesController;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Data\UseCases\Category\Paginate\PaginateCategoriesUseCase;
+use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Tests\TestCase;

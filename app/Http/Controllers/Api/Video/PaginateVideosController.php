@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Video;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Data\UseCases\Video\Paginate\DTO\PaginateVideosInputDto;
-use Core\Data\UseCases\Video\Paginate\PaginateVideosUseCase;
+use Core\Application\UseCases\Video\Paginate\DTO\PaginateVideosInputDto;
+use Core\Application\UseCases\Video\Paginate\PaginateVideosUseCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

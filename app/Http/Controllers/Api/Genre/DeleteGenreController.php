@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Genre;
 
 use App\Http\Controllers\Controller;
-use Core\Data\UseCases\Genre\Delete\DeleteGenreUseCaseInterface;
-use Core\Data\UseCases\Genre\List\DTO\ListGenreInputDto;
+use Core\Application\UseCases\Genre\Delete\DeleteGenreUseCaseInterface;
+use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
 use Illuminate\Http\Response;
 
 class DeleteGenreController extends Controller

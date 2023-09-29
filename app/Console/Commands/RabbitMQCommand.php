@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Services\AMQP\AMQPInterface;
-use Core\Data\UseCases\Video\ChangeEncoded\ChangeEncodedPathVideoUseCase;
-use Core\Data\UseCases\Video\ChangeEncoded\DTO\ChangeEncodedVideoInputDto;
+use Core\Application\UseCases\Video\ChangeEncoded\ChangeEncodedPathVideoUseCase;
+use Core\Application\UseCases\Video\ChangeEncoded\DTO\ChangeEncodedVideoInputDto;
 use Illuminate\Console\Command;
 
 class RabbitMQCommand extends Command

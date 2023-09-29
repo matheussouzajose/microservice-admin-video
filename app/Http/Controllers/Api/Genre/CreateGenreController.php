@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Genre;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGenreRequest;
-use Core\Data\UseCases\Genre\Create\CreateGenreUseCaseInterface;
-use Core\Data\UseCases\Genre\Create\DTO\CreateGenreInputDto;
+use Core\Application\UseCases\Genre\Create\CreateGenreUseCaseInterface;
+use Core\Application\UseCases\Genre\Create\DTO\CreateGenreInputDto;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

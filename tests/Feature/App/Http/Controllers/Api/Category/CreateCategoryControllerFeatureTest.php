@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\Category\CreateCategoryController;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Data\UseCases\Category\Create\CreateCategoryUseCase;
+use Core\Application\UseCases\Category\Create\CreateCategoryUseCase;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Response;

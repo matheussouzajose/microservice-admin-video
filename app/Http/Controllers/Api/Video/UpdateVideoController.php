@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Video;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateVideoRequest;
-use Core\Data\UseCases\Video\Update\DTO\UpdateVideoInputDto;
-use Core\Data\UseCases\Video\Update\UpdateVideoUseCase;
+use Core\Application\UseCases\Video\Update\DTO\UpdateVideoInputDto;
+use Core\Application\UseCases\Video\Update\UpdateVideoUseCase;
 use Core\Domain\Exception\NotificationException;
 use Illuminate\Http\JsonResponse;
 

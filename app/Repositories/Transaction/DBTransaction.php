@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Transaction;
 
-use Core\Data\UseCases\Interfaces\TransactionInterface;
+use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Illuminate\Support\Facades\DB;
 
 class DBTransaction implements TransactionInterface

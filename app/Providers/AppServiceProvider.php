@@ -6,8 +6,8 @@ use App\Events\VideoEvent;
 use App\Services\AMQP\AMQPInterface;
 use App\Services\AMQP\PhpAmqpService;
 use App\Services\FileStorage\FileStorage;
-use Core\Data\UseCases\Interfaces\FileStorageInterface;
-use Core\Data\UseCases\Video\Interfaces\VideoEventManagerInterface;
+use Core\Application\UseCases\Interfaces\FileStorageInterface;
+use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

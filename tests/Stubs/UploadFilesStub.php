@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use Core\Data\UseCases\Interfaces\FileStorageInterface;
+use Core\Application\UseCases\Interfaces\FileStorageInterface;
 
 class UploadFilesStub implements FileStorageInterface
 {
