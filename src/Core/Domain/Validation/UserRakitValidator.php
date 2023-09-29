@@ -15,7 +15,6 @@ class UserRakitValidator implements ValidatorInterface
             'firstName' => 'required|min:3|max:255',
             'lastName' => 'required|min:3|max:255',
             'email' => 'required|email',
-            'password' => 'required|min:6',
         ]);
 
         if ($validation->fails()) {
@@ -34,7 +33,7 @@ class UserRakitValidator implements ValidatorInterface
             'firstName' => $entity->firstName,
             'lastName' => $entity->lastName,
             'email' => $entity->email,
-            'password' => $entity->password
+            'password' => $entity->password,
         ];
     }
 }

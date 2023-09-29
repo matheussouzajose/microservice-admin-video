@@ -16,7 +16,7 @@ class User extends Entity
         protected string $firstName,
         protected string $lastName,
         protected string $email,
-        protected string $password,
+        protected ?string $password = null,
         protected ?Image $userAvatar = null,
         protected ?Uuid $id = null,
         protected ?\DateTime $emailVerifiedAt = null,
