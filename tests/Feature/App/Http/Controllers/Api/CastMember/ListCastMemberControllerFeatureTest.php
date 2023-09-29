@@ -5,7 +5,7 @@ namespace Feature\App\Http\Controllers\Api\CastMember;
 use App\Http\Controllers\Api\CastMember\ListCastMemberController;
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Data\UseCases\CastMember\List\ListCastMemberUseCase;
+use Core\Application\UseCases\CastMember\List\ListCastMemberUseCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;

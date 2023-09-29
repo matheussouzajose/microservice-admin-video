@@ -5,7 +5,7 @@ namespace Tests\Feature\App\Http\Controllers\Api\Category;
 use App\Http\Controllers\Api\Category\DeleteCategoryController;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Data\UseCases\Category\Delete\DeleteCategoryUseCase;
+use Core\Application\UseCases\Category\Delete\DeleteCategoryUseCase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 

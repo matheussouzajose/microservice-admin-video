@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Category;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
-use Core\Data\UseCases\Category\Create\CreateCategoryUseCaseInterface;
-use Core\Data\UseCases\Category\Create\DTO\CreateCategoryInputDto;
+use Core\Application\UseCases\Category\Create\CreateCategoryUseCaseInterface;
+use Core\Application\UseCases\Category\Create\DTO\CreateCategoryInputDto;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

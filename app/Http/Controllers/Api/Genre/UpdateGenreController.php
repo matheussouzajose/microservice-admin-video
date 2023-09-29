@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Genre;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateGenreRequest;
-use Core\Data\UseCases\Genre\Update\DTO\UpdateGenreInputDto;
-use Core\Data\UseCases\Genre\Update\UpdateGenreUseCaseInterface;
+use Core\Application\UseCases\Genre\Update\DTO\UpdateGenreInputDto;
+use Core\Application\UseCases\Genre\Update\UpdateGenreUseCaseInterface;
 use Illuminate\Http\JsonResponse;
 
 class UpdateGenreController extends Controller

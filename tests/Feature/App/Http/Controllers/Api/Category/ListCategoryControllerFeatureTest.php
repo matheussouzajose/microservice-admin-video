@@ -5,7 +5,7 @@ namespace Tests\Feature\App\Http\Controllers\Api\Category;
 use App\Http\Controllers\Api\Category\ListCategoryController;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Data\UseCases\Category\List\ListCategoryUseCase;
+use Core\Application\UseCases\Category\List\ListCategoryUseCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;

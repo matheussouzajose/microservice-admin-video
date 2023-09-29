@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\CastMember;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCastMemberRequest;
-use Core\Data\UseCases\CastMember\Create\CreateCastMemberUseCaseInterface;
-use Core\Data\UseCases\CastMember\Create\DTO\CreateCastMemberInputDto;
+use Core\Application\UseCases\CastMember\Create\CreateCastMemberUseCaseInterface;
+use Core\Application\UseCases\CastMember\Create\DTO\CreateCastMemberInputDto;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
