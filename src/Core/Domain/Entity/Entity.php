@@ -3,7 +3,6 @@
 namespace Core\Domain\Entity;
 
 use Core\Domain\Notification\Notification;
-use Exception;
 
 abstract class Entity
 {
@@ -14,6 +13,9 @@ abstract class Entity
         $this->notification = new Notification();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function __get($property)
     {
         if (isset($this->{$property})) {
@@ -21,7 +23,7 @@ abstract class Entity
         }
 
         $className = get_class($this);
-        throw new Exception("Property {$property} not found in class {$className}");
+        throw new \Exception("Property {$property} not found in class {$className}");
     }
 
     public function id(): string

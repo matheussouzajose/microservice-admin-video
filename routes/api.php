@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/me', function () {
     Log::warning('test;');
+
     return response()->json(['message' => 'mse']);
 });
 
