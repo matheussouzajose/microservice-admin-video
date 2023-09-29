@@ -14,9 +14,6 @@ abstract class Entity
         $this->notification = new Notification();
     }
 
-    /**
-     * @throws Exception
-     */
     public function __get($property)
     {
         if (isset($this->{$property})) {
