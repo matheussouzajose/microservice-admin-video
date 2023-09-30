@@ -26,7 +26,7 @@ class UserUnitTest extends ModelTestCase
             HasApiTokens::class,
             HasFactory::class,
             Notifiable::class,
-            SoftDeletes::class
+            SoftDeletes::class,
         ];
     }
 

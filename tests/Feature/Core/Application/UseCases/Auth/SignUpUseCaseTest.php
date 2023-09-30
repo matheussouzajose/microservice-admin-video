@@ -45,7 +45,7 @@ class SignUpUseCaseTest extends TestCase
         $this->expectExceptionMessage('Email already in use');
 
         User::factory()->create([
-            'email' => 'matheus.jose@gmail.com'
+            'email' => 'matheus.jose@gmail.com',
         ]);
 
         $repository = $this->app->make(AuthRepositoryInterface::class);

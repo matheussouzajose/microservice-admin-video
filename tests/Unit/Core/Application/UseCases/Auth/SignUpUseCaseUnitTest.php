@@ -1,14 +1,12 @@
 <?php
 
-namespace Unit\Core\Application\UseCases\Auth;
+namespace Tests\Unit\Core\Application\UseCases\Auth;
 
 use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
-use Core\Application\UseCases\Auth\SignUp\SignUpUseCase;
-use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Domain\Entity\User;
 use Core\Domain\Exception\EmailAlreadyInUseException;
-use Core\Domain\Repository\AuthRepositoryInterface;
 use Tests\TestCase;
+use Tests\Unit\Core\Application\Mocks\SignUpUseCaseMock;
 
 class SignUpUseCaseUnitTest extends TestCase
 {
@@ -24,62 +22,68 @@ class SignUpUseCaseUnitTest extends TestCase
 
     private function createInputDto(): SignUpInputDto
     {
-        $input = ['Matheus', 'Jose', 'matheus.jose@gmail.com', '123456789'];
-        return \Mockery::mock(SignUpInputDto::class, $input);
+        return \Mockery::spy(SignUpInputDto::class, [
+            'Matheus',
+            'Jose',
+            'matheus.jose@gmail.com',
+            '123456789',
+        ]);
     }
 
-    private function createUseCase(AuthRepositoryInterface $repository, HasherInterface $hasher): SignUpUseCase
+    /**
+     * @dataProvider  externalMethodWithValueProvider
+     */
+    public function testCallExternalMethodsWithCorrectValue(string $external, string $method, string $value)
     {
-        return new SignUpUseCase(
-            repository: $repository,
-            hasher: $hasher
+        $sut = (new SignUpUseCaseMock())->make();
+        $sut->getRepository()->shouldReceive('signUp')->andReturn($this->createEntity());
+
+        $sut->getUseCase()->execute(
+            input: $this->createInputDto()
         );
+
+        $result = $sut->{$external}()->shouldHaveReceived($method)->once();
+        if (! empty($value)) {
+            $result->with($value);
+        }
     }
 
-    public function testThrowsIfSignUpThrows()
+    public function externalMethodWithValueProvider(): array
+    {
+        return [
+            ['getRepository', 'checkByEmail', 'matheus.jose@gmail.com'],
+            ['getHasher', 'hash', '123456789'],
+            ['getRepository', 'signUp', ''],
+            ['getEventManager', 'dispatch', ''],
+            ['getTransaction', 'commit', ''],
+        ];
+    }
+
+    /**
+     * @dataProvider  externalMethodProvider
+     */
+    public function testThrowsMethodsIfThrows(string $external, string $method)
     {
         $this->expectException(\Exception::class);
 
-        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
-        $repository->shouldReceive('signUp')->andThrow(new \Exception());
+        $sut = (new SignUpUseCaseMock())->make();
+        $sut->{$external}()->shouldReceive($method)->andThrow(new \Exception());
+        $sut->getUseCase()->execute(
+            input: $this->createInputDto()
+        );
 
-        $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
-
-        $useCase = $this->createUseCase($repository, $hash);
-        $useCase->execute($this->createInputDto());
+        $sut->getTransaction()->shouldHaveReceived('roolback')->once();
     }
 
-    public function testThrowsIfHasherThrows()
+    public function externalMethodProvider(): array
     {
-        $this->expectException(\Exception::class);
-
-        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
-
-        $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
-        $hash->shouldReceive('hash')->andThrow(new \Exception());
-
-        $useCase = $this->createUseCase($repository, $hash);
-        $useCase->execute($this->createInputDto());
-    }
-
-    public function testSignUpSuccess()
-    {
-        $entity = $this->createEntity();
-        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
-        $repository->shouldReceive('signUp')->times(1)->andReturn($entity);
-        $repository->shouldReceive('checkByEmail')->andReturn(false);
-
-        $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
-        $hash->shouldReceive('hash')->times(1)->andReturn('hashed_value');
-
-        $useCase = $this->createUseCase($repository, $hash);
-        $response = $useCase->execute($this->createInputDto());
-
-        $this->assertNotEmpty($response->id);
-        $this->assertEquals($entity->firstName, $response->firstName);
-        $this->assertEquals($entity->lastName, $response->lastName);
-        $this->assertEquals($entity->email, $response->email);
-        $this->assertNotEmpty($response->createdAt);
+        return [
+            ['getRepository', 'checkByEmail'],
+            ['getRepository', 'signUp'],
+            ['getHasher', 'hash'],
+            ['getEventManager', 'dispatch'],
+            ['getTransaction', 'commit'],
+        ];
     }
 
     public function testThrowsIfEmailAlreadyInUseThrows()
@@ -87,15 +91,29 @@ class SignUpUseCaseUnitTest extends TestCase
         $this->expectException(EmailAlreadyInUseException::class);
         $this->expectExceptionMessage('Email already in use');
 
+        $sut = (new SignUpUseCaseMock())->make();
+
+        $sut->getRepository()->shouldReceive('checkByEmail')->andReturn(true);
+
+        $sut->getUseCase()->execute(
+            input: $this->createInputDto()
+        );
+    }
+
+    public function testSignUpSuccess()
+    {
+        $sut = (new SignUpUseCaseMock())->make();
         $entity = $this->createEntity();
-        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
-        $repository->shouldReceive('signUp')->andReturn($entity);
-        $repository->shouldReceive('checkByEmail')->andReturn(true);
+        $sut->getRepository()->shouldReceive('signUp')->andReturn($entity);
 
-        $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
-        $hash->shouldReceive('hash')->andReturn('hashed_value');
+        $response = $sut->getUseCase()->execute(
+            input: $this->createInputDto()
+        );
 
-        $useCase = $this->createUseCase($repository, $hash);
-        $useCase->execute($this->createInputDto());
+        $this->assertNotEmpty($response->id);
+        $this->assertEquals($entity->firstName, $response->firstName);
+        $this->assertEquals($entity->lastName, $response->lastName);
+        $this->assertEquals($entity->email, $response->email);
+        $this->assertNotEmpty($response->createdAt);
     }
 }

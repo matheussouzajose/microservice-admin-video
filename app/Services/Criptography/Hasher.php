@@ -10,9 +10,10 @@ class Hasher implements HasherInterface
     public function hash(string $plaintext): string
     {
         $hashInfo = Hash::info($plaintext);
-        if (!$hashInfo['algo']) {
+        if (! $hashInfo['algo']) {
             return Hash::make($plaintext);
         }
+
         return $plaintext;
     }
 

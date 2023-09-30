@@ -48,7 +48,7 @@ class AuthEloquentRepositoryTest extends TestCase
             'first_name' => $entity->firstName,
             'last_name' => $entity->lastName,
             'email' => $entity->email,
-            'password' => $entity->password
+            'password' => $entity->password,
         ]);
     }
 }
