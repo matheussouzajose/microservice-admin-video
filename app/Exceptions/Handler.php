@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Exception\EntityValidationException;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Exception\NotificationException;
@@ -61,6 +62,10 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof TokenException) {
             return $this->showError($e->getMessage(), Response::HTTP_FORBIDDEN);
+        }
+
+        if ($e instanceof EmailAlreadyInUseException) {
+            return $this->showError($e->getMessage(), Response::HTTP_CONFLICT);
         }
 
         return parent::render($request, $e);

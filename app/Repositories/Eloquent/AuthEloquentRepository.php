@@ -55,4 +55,9 @@ class AuthEloquentRepository implements AuthRepositoryInterface
 
         return $entity;
     }
+
+    public function checkByEmail(string $email): bool
+    {
+        return $this->model->where('email', $email)->exists();
+    }
 }

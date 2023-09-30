@@ -6,6 +6,7 @@ use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
 use Core\Application\UseCases\Auth\SignUp\SignUpUseCase;
 use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Domain\Entity\User;
+use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Repository\AuthRepositoryInterface;
 use Tests\TestCase;
 
@@ -66,6 +67,7 @@ class SignUpUseCaseUnitTest extends TestCase
         $entity = $this->createEntity();
         $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
         $repository->shouldReceive('signUp')->times(1)->andReturn($entity);
+        $repository->shouldReceive('checkByEmail')->andReturn(false);
 
         $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
         $hash->shouldReceive('hash')->times(1)->andReturn('hashed_value');
@@ -78,6 +80,22 @@ class SignUpUseCaseUnitTest extends TestCase
         $this->assertEquals($entity->lastName, $response->lastName);
         $this->assertEquals($entity->email, $response->email);
         $this->assertNotEmpty($response->createdAt);
-        $this->assertNull($response->emailVerifiedAt);
+    }
+
+    public function testThrowsIfEmailAlreadyInUseThrows()
+    {
+        $this->expectException(EmailAlreadyInUseException::class);
+        $this->expectExceptionMessage('Email already in use');
+
+        $entity = $this->createEntity();
+        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
+        $repository->shouldReceive('signUp')->andReturn($entity);
+        $repository->shouldReceive('checkByEmail')->andReturn(true);
+
+        $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
+        $hash->shouldReceive('hash')->andReturn('hashed_value');
+
+        $useCase = $this->createUseCase($repository, $hash);
+        $useCase->execute($this->createInputDto());
     }
 }

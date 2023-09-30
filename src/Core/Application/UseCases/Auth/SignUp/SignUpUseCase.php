@@ -6,7 +6,10 @@ use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
 use Core\Application\UseCases\Auth\SignUp\DTO\SignUpOutputDto;
 use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Domain\Entity\User;
+use Core\Domain\Exception\EmailAlreadyInUseException;
+use Core\Domain\Exception\NotificationException;
 use Core\Domain\Repository\AuthRepositoryInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class SignUpUseCase implements SignUpUseCaseInterface
 {
@@ -16,6 +19,10 @@ class SignUpUseCase implements SignUpUseCaseInterface
     ) {
     }
 
+    /**
+     * @throws EmailAlreadyInUseException
+     * @throws NotificationException
+     */
     public function execute(SignUpInputDto $input): SignUpOutputDto
     {
         $entity = new User(
@@ -24,7 +31,13 @@ class SignUpUseCase implements SignUpUseCaseInterface
             email: $input->email
         );
 
-        $hashedPassword = $this->hasher->hash( $input->password);
+        if ($this->repository->checkByEmail($input->email)) {
+            throw new EmailAlreadyInUseException(
+            'Email already in use'
+            );
+        }
+
+        $hashedPassword = $this->hasher->hash($input->password);
         $entity->updatePassword($hashedPassword);
 
         $result = $this->repository->signUp($entity);
