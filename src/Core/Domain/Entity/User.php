@@ -28,6 +28,8 @@ class User extends Entity
 
         $this->id = $this->id ?? Uuid::random();
         $this->createdAt = $this->createdAt ?? new \DateTime();
+        $this->updatedAt = $this->updatedAt ?? new \DateTime();
+
         $this->validation();
     }
 
@@ -53,15 +55,13 @@ class User extends Entity
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
-        $this->updatedAt = new \DateTime();
 
         $this->validation();
     }
 
-    public function setUserAvatar(Image $userAvatar): void
+    public function setUserAvatar(Image $path): void
     {
-        $this->userAvatar = $userAvatar;
-        $this->updatedAt = new \DateTime();
+        $this->userAvatar = $path;
     }
 
     public function userAvatar(): ?Image
@@ -75,7 +75,6 @@ class User extends Entity
     public function updatePassword(string $password): void
     {
         $this->password = $password;
-        $this->updatedAt = new \DateTime();
 
         $this->validation();
     }

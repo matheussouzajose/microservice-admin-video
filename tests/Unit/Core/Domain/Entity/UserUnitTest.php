@@ -73,7 +73,7 @@ class UserUnitTest extends TestCase
 
         $avatarUrl = new Image('path/clark-kent.jpg');
         $entity->setUserAvatar(
-            userAvatar: $avatarUrl
+            path: $avatarUrl
         );
 
         $this->assertNotNull($entity->userAvatar());
