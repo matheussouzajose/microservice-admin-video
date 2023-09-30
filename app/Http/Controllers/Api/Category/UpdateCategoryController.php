@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Category;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateCategoryRequest;
-use Core\Application\UseCases\Category\Update\DTO\UpdateCategoryInputDto;
-use Core\Application\UseCases\Category\Update\UpdateCategoryUseCaseInterface;
+use Core\Domain\UseCases\Category\UpdateCategoryUseCaseInterface;
+use Core\Intermediate\Dtos\Category\UpdateCategoryInputDto;
 use Illuminate\Http\JsonResponse;
 
 class UpdateCategoryController extends Controller

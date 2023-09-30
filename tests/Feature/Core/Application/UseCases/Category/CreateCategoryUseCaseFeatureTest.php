@@ -4,8 +4,8 @@ namespace Tests\Feature\Core\Application\UseCases\Category;
 
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Application\UseCases\Category\Create\CreateCategoryUseCase;
-use Core\Application\UseCases\Category\Create\DTO\CreateCategoryInputDto;
+use Core\Application\UseCases\Category\CreateCategoryUseCase;
+use Core\Intermediate\Dtos\Category\CreateCategoryInputDto;
 use Tests\TestCase;
 
 class CreateCategoryUseCaseFeatureTest extends TestCase

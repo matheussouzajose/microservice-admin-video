@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\CastMember;
 
 use App\Models\CastMember as Model;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\List\DTO\ListCastMemberInputDto;
-use Core\Application\UseCases\CastMember\List\ListCastMemberUseCase;
+use Core\Application\UseCases\CastMember\ListCastMemberUseCase;
+use Core\Intermediate\Dtos\CastMember\ListCastMemberInputDto;
 use Tests\TestCase;
 
 class ListCastMemberUseCaseTest extends TestCase

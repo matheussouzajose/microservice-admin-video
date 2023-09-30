@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\ChangeEncoded\ChangeEncodedPathVideoUseCase;
-use Core\Application\UseCases\Video\ChangeEncoded\DTO\ChangeEncodedVideoInputDto;
-use Core\Application\UseCases\Video\ChangeEncoded\DTO\ChangeEncodedVideoOutputDto;
+use Core\Application\UseCases\Video\ChangeEncodedPathVideoUseCase;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\Rating;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\ChangeEncodedVideoInputDto;
+use Core\Intermediate\Dtos\Video\ChangeEncodedVideoOutputDto;
 use Tests\TestCase;
 
 class ChangeEncodedPathVideoUnitTest extends TestCase

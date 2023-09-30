@@ -4,8 +4,8 @@ namespace Tests\Feature\Core\Application\UseCases\Category;
 
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Application\UseCases\Category\Delete\DeleteCategoryUseCase;
-use Core\Application\UseCases\Category\Delete\DTO\DeleteCategoryInputDto;
+use Core\Application\UseCases\Category\DeleteCategoryUseCase;
+use Core\Intermediate\Dtos\Category\DeleteCategoryInputDto;
 use Tests\TestCase;
 
 class DeleteCategoryUseCaseFeatureTest extends TestCase

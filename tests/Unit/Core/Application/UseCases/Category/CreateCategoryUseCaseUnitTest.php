@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Category;
 
-use Core\Application\UseCases\Category\Create\CreateCategoryUseCase;
-use Core\Application\UseCases\Category\Create\DTO\CreateCategoryInputDto;
-use Core\Application\UseCases\Category\Create\DTO\CreateCategoryOutputDto;
+use Core\Application\UseCases\Category\CreateCategoryUseCase;
 use Core\Domain\Entity\Category;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\ValueObject\Uuid;
+use Core\Intermediate\Dtos\Category\CreateCategoryInputDto;
+use Core\Intermediate\Dtos\Category\CreateCategoryOutputDto;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DomainValidationUnitTest extends TestCase
 {
-    const ERROR_MESSAGE = 'Message Error';
+    public const ERROR_MESSAGE = 'Message Error';
 
     public function testNotNull()
     {

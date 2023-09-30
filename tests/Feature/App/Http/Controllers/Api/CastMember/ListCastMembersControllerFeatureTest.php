@@ -5,7 +5,7 @@ namespace Feature\App\Http\Controllers\Api\CastMember;
 use App\Http\Controllers\Api\CastMember\PaginateCastMembersController;
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCase;
+use Core\Application\UseCases\CastMember\PaginateCastMembersUseCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Tests\TestCase;

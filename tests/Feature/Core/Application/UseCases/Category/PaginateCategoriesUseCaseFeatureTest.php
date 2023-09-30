@@ -4,9 +4,9 @@ namespace Tests\Feature\Core\Application\UseCases\Category;
 
 use App\Models\Category as CategoryModel;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Application\UseCases\Category\Paginate\DTO\PaginateCategoriesInputDto;
-use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCase;
+use Core\Application\UseCases\Category\PaginateCategoriesUseCase;
 use Core\Domain\Repository\PaginationInterface;
+use Core\Intermediate\Dtos\Category\PaginateCategoriesInputDto;
 use Tests\TestCase;
 
 class PaginateCategoriesUseCaseFeatureTest extends TestCase

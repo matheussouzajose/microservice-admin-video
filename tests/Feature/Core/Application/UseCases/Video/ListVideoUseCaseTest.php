@@ -3,10 +3,10 @@
 namespace Feature\Core\Application\UseCases\Video;
 
 use App\Models\Video;
-use Core\Application\UseCases\Video\List\DTO\ListVideoInputDto;
-use Core\Application\UseCases\Video\List\ListVideoUseCase;
+use Core\Application\UseCases\Video\ListVideoUseCase;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\ListVideoInputDto;
 use Tests\TestCase;
 
 class ListVideoUseCaseTest extends TestCase

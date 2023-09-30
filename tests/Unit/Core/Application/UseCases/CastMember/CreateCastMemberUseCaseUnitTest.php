@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Core\Application\UseCases\CastMember;
 
-use Core\Application\UseCases\CastMember\Create\CreateCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Create\DTO\CreateCastMemberInputDto;
-use Core\Application\UseCases\CastMember\Create\DTO\CreateCastMemberOutputDto;
+use Core\Application\UseCases\CastMember\CreateCastMemberUseCase;
 use Core\Domain\Entity\CastMember as EntityCastMember;
 use Core\Domain\Enum\CastMemberType;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
+use Core\Intermediate\Dtos\CastMember\CreateCastMemberInputDto;
+use Core\Intermediate\Dtos\CastMember\CreateCastMemberOutputDto;
 use PHPUnit\Framework\TestCase;
 
 class CreateCastMemberUseCaseUnitTest extends TestCase

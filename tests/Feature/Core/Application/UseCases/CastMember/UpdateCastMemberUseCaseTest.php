@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\CastMember;
 
 use App\Models\CastMember as Model;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Update\DTO\UpdateCastMemberInputDto;
-use Core\Application\UseCases\CastMember\Update\UpdateCastMemberUseCase;
+use Core\Application\UseCases\CastMember\UpdateCastMemberUseCase;
+use Core\Intermediate\Dtos\CastMember\UpdateCastMemberInputDto;
 use Tests\TestCase;
 
 class UpdateCastMemberUseCaseTest extends TestCase

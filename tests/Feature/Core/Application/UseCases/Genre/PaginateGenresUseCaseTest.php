@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\Genre;
 
 use App\Models\Genre;
 use App\Repositories\Eloquent\GenreEloquentRepository;
-use Core\Application\UseCases\Genre\Paginate\DTO\PaginateGenresInputDto;
-use Core\Application\UseCases\Genre\Paginate\PaginateGenresUseCase;
+use Core\Application\UseCases\Genre\PaginateGenresUseCase;
+use Core\Intermediate\Dtos\Genre\PaginateGenresInputDto;
 use Tests\TestCase;
 
 class PaginateGenresUseCaseTest extends TestCase

@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\CastMember;
 
-use Core\Application\UseCases\CastMember\Paginate\DTO\PaginateCastMembersInputDto;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCase;
+use Core\Application\UseCases\CastMember\PaginateCastMembersUseCase;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;
+use Core\Intermediate\Dtos\CastMember\PaginateCastMembersInputDto;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Core\Application\UseCases\UseCaseTrait;
 

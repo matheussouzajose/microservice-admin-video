@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Core\Application\Mocks;
 
-use Core\Application\UseCases\Auth\SignUp\SignUpUseCase;
-use Core\Application\UseCases\Auth\SignUp\SignUpUseCaseInterface;
+use Core\Application\UseCases\Auth\SignUpUseCase;
 use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Application\UseCases\Interfaces\UserEventManagerInterface;
 use Core\Domain\Repository\AuthRepositoryInterface;
+use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 
 class SignUpUseCaseMock
 {

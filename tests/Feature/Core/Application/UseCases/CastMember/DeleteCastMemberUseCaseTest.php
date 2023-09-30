@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\CastMember;
 
 use App\Models\CastMember as Model;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Delete\DTO\DeleteCastMemberInputDto;
+use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
+use Core\Intermediate\Dtos\CastMember\DeleteCastMemberInputDto;
 use Tests\TestCase;
 
 class DeleteCastMemberUseCaseTest extends TestCase

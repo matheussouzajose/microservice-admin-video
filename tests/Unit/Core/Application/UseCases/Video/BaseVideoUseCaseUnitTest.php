@@ -36,12 +36,9 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
     protected function createUseCase(
         int $timesCallMethodActionRepository = 1,
         int $timesCallMethodUpdateMediaRepository = 1,
-
         int $timesCallMethodCommitTransaction = 1,
         int $timesCallMethodRollbackTransaction = 0,
-
         int $timesCallMethodStoreFileStorage = 0,
-
         int $timesCallMethodDispatchEventManager = 0
     ): void {
         $this->useCase = new ($this->getUseCase())(
@@ -59,7 +56,6 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
             eventManager: $this->createMockEventManager(
                 times: $timesCallMethodDispatchEventManager
             ),
-
             categoryRepository: $this->createMockRepositoryCategory(),
             genreRepository: $this->createMockRepositoryGenre(),
             castMemberRepository: $this->createMockRepositoryCastMember(),

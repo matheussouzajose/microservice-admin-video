@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\CastMember\UpdateCastMemberController;
 use App\Http\Requests\UpdateCastMemberRequest;
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Update\UpdateCastMemberUseCase;
+use Core\Application\UseCases\CastMember\UpdateCastMemberUseCase;
 use Core\Domain\Exception\EntityValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;

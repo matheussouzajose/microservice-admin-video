@@ -2,13 +2,13 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\List\DTO\ListVideoInputDto;
-use Core\Application\UseCases\Video\List\DTO\ListVideoOutputDto;
-use Core\Application\UseCases\Video\List\ListVideoUseCase;
+use Core\Application\UseCases\Video\ListVideoUseCase;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\Rating;
 use Core\Domain\Repository\VideoRepositoryInterface;
 use Core\Domain\ValueObject\Uuid;
+use Core\Intermediate\Dtos\Video\ListVideoInputDto;
+use Core\Intermediate\Dtos\Video\ListVideoOutputDto;
 use Tests\TestCase;
 
 class ListVideoUseCaseUnitTest extends TestCase

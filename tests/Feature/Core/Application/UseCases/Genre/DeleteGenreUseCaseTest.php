@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\Genre;
 
 use App\Models\Genre as Model;
 use App\Repositories\Eloquent\GenreEloquentRepository;
-use Core\Application\UseCases\Genre\Delete\DeleteGenreUseCase;
-use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
+use Core\Application\UseCases\Genre\DeleteGenreUseCase;
+use Core\Intermediate\Dtos\Genre\ListGenreInputDto;
 use Tests\TestCase;
 
 class DeleteGenreUseCaseTest extends TestCase

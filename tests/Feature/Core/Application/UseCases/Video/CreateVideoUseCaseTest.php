@@ -2,9 +2,9 @@
 
 namespace Feature\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\Create\CreateVideoUseCase;
-use Core\Application\UseCases\Video\Create\DTO\CreateVideoInputDto;
+use Core\Application\UseCases\Video\CreateVideoUseCase;
 use Core\Domain\Enum\Rating;
+use Core\Intermediate\Dtos\Video\CreateVideoInputDto;
 
 class CreateVideoUseCaseTest extends BaseVideoUseCaseTest
 {

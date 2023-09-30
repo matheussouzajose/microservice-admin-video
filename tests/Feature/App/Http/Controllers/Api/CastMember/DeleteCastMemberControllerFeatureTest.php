@@ -5,7 +5,7 @@ namespace Feature\App\Http\Controllers\Api\CastMember;
 use App\Http\Controllers\Api\CastMember\DeleteCastMemberController;
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCase;
+use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 

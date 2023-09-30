@@ -3,9 +3,9 @@
 namespace Feature\Core\Application\UseCases\Video;
 
 use App\Models\Video;
-use Core\Application\UseCases\Video\ChangeEncoded\ChangeEncodedPathVideoUseCase;
-use Core\Application\UseCases\Video\ChangeEncoded\DTO\ChangeEncodedVideoInputDto;
+use Core\Application\UseCases\Video\ChangeEncodedPathVideoUseCase;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\ChangeEncodedVideoInputDto;
 use Tests\TestCase;
 
 class ChangeEncodedPathVideoUseCaseTest extends TestCase

@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\Genre;
 
 use App\Models\Genre as Model;
 use App\Repositories\Eloquent\GenreEloquentRepository;
-use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
-use Core\Application\UseCases\Genre\List\ListGenreUseCase;
+use Core\Application\UseCases\Genre\ListGenreUseCase;
+use Core\Intermediate\Dtos\Genre\ListGenreInputDto;
 use Tests\TestCase;
 
 class ListGenreUseCaseTest extends TestCase

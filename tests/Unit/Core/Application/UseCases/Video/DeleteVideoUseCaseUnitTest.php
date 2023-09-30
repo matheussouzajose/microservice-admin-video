@@ -2,11 +2,11 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\Delete\DeleteVideoUseCase;
-use Core\Application\UseCases\Video\Delete\DTO\DeleteVideoInputDto;
-use Core\Application\UseCases\Video\Delete\DTO\DeleteVideoOutputDto;
+use Core\Application\UseCases\Video\DeleteVideoUseCase;
 use Core\Domain\Repository\VideoRepositoryInterface;
 use Core\Domain\ValueObject\Uuid;
+use Core\Intermediate\Dtos\Video\DeleteVideoInputDto;
+use Core\Intermediate\Dtos\Video\DeleteVideoOutputDto;
 use Tests\TestCase;
 
 class DeleteVideoUseCaseUnitTest extends TestCase

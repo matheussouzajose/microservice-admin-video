@@ -143,7 +143,6 @@ abstract class BaseVideoUseCaseTest extends TestCase
             new UploadFilesStub(),
             // $this->app->make(VideoEventManagerInterface::class),
             new VideoEventStub(),
-
             $this->app->make(CategoryRepositoryInterface::class),
             $this->app->make(GenreRepositoryInterface::class),
             $this->app->make(CastMemberRepositoryInterface::class)

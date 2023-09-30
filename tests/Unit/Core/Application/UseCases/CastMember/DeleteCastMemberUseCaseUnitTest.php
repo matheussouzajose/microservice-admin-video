@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\CastMember;
 
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Delete\DTO\DeleteCastMemberInputDto;
-use Core\Application\UseCases\CastMember\Delete\DTO\DeleteCastMemberOutputDto;
+use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
+use Core\Intermediate\Dtos\CastMember\DeleteCastMemberInputDto;
+use Core\Intermediate\Dtos\CastMember\DeleteCastMemberOutputDto;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 

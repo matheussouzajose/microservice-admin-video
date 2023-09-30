@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\CastMember\CreateCastMemberController;
 use App\Http\Requests\StoreCastMemberRequest;
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Create\CreateCastMemberUseCase;
+use Core\Application\UseCases\CastMember\CreateCastMemberUseCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Response;

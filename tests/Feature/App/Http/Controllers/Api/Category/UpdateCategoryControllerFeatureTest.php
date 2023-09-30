@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\Category\UpdateCategoryController;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
-use Core\Application\UseCases\Category\Update\UpdateCategoryUseCase;
+use Core\Application\UseCases\Category\UpdateCategoryUseCase;
 use Core\Domain\Exception\EntityValidationException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;

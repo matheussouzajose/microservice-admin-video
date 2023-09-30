@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Auth;
 
-use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
 use Core\Domain\Entity\User;
 use Core\Domain\Exception\EmailAlreadyInUseException;
+use Core\Intermediate\Dtos\Auth\SignUpInputDto;
 use Tests\TestCase;
 use Tests\Unit\Core\Application\Mocks\SignUpUseCaseMock;
 
