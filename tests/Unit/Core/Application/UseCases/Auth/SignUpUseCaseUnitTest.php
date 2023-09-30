@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit\Core\Application\UseCases\User;
+namespace Unit\Core\Application\UseCases\Auth;
 
+use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
+use Core\Application\UseCases\Auth\SignUp\SignUpUseCase;
 use Core\Application\UseCases\Interfaces\HasherInterface;
-use Core\Application\UseCases\User\Create\CreateUserUseCase;
-use Core\Application\UseCases\User\Create\CreateUserUseCaseInterface;
-use Core\Application\UseCases\User\Create\DTO\SignUpInputDto;
 use Core\Domain\Entity\User;
+use Core\Domain\Repository\AuthRepositoryInterface;
 use Core\Domain\Repository\UserRepositoryInterface;
 use Tests\TestCase;
 
-class CreateUserUseCaseUnitTest extends TestCase
+class SignUpUseCaseUnitTest extends TestCase
 {
     private function createEntity(): User
     {
@@ -28,20 +28,20 @@ class CreateUserUseCaseUnitTest extends TestCase
         return \Mockery::mock(SignUpInputDto::class, $input);
     }
 
-    private function createUseCase(UserRepositoryInterface $repository, HasherInterface $hasher): CreateUserUseCaseInterface
+    private function createUseCase(AuthRepositoryInterface $repository, HasherInterface $hasher): SignUpUseCase
     {
-        return new CreateUserUseCase(
+        return new SignUpUseCase(
             repository: $repository,
             hasher: $hasher
         );
     }
 
-    public function testThrowsIfUserRepositoryThrows()
+    public function testThrowsIfSignUpThrows()
     {
         $this->expectException(\Exception::class);
 
-        $repository = \Mockery::mock(\stdClass::class, UserRepositoryInterface::class);
-        $repository->shouldReceive('insert')->andThrow(new \Exception());
+        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
+        $repository->shouldReceive('signUp')->andThrow(new \Exception());
 
         $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
 
@@ -53,7 +53,7 @@ class CreateUserUseCaseUnitTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $repository = \Mockery::mock(\stdClass::class, UserRepositoryInterface::class);
+        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
 
         $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
         $hash->shouldReceive('hash')->andThrow(new \Exception());
@@ -62,11 +62,11 @@ class CreateUserUseCaseUnitTest extends TestCase
         $useCase->execute($this->createInputDto());
     }
 
-    public function testCreateUserSuccess()
+    public function testSignUpSuccess()
     {
         $entity = $this->createEntity();
-        $repository = \Mockery::mock(\stdClass::class, UserRepositoryInterface::class);
-        $repository->shouldReceive('insert')->times(1)->andReturn($entity);
+        $repository = \Mockery::mock(\stdClass::class, AuthRepositoryInterface::class);
+        $repository->shouldReceive('signUp')->times(1)->andReturn($entity);
 
         $hash = \Mockery::mock(\stdClass::class, HasherInterface::class);
         $hash->shouldReceive('hash')->times(1)->andReturn('hashed_value');

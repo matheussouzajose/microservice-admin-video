@@ -1,25 +1,21 @@
 <?php
 
-namespace Core\Application\UseCases\User\Create;
+namespace Core\Application\UseCases\Auth\SignUp;
 
+use Core\Application\UseCases\Auth\SignUp\DTO\SignUpInputDto;
+use Core\Application\UseCases\Auth\SignUp\DTO\SignUpOutputDto;
 use Core\Application\UseCases\Interfaces\HasherInterface;
-use Core\Application\UseCases\User\Create\DTO\SignUpInputDto;
-use Core\Application\UseCases\User\Create\DTO\SignUpOutputDto;
 use Core\Domain\Entity\User;
-use Core\Domain\Exception\NotificationException;
-use Core\Domain\Repository\UserRepositoryInterface;
+use Core\Domain\Repository\AuthRepositoryInterface;
 
-class CreateUserUseCase implements CreateUserUseCaseInterface
+class SignUpUseCase implements SignUpUseCaseInterface
 {
     public function __construct(
-        protected UserRepositoryInterface $repository,
+        protected AuthRepositoryInterface $repository,
         protected HasherInterface $hasher
     ) {
     }
 
-    /**
-     * @throws NotificationException
-     */
     public function execute(SignUpInputDto $input): SignUpOutputDto
     {
         $entity = new User(
@@ -31,7 +27,7 @@ class CreateUserUseCase implements CreateUserUseCaseInterface
         $hashedPassword = $this->hasher->hash( $input->password);
         $entity->updatePassword($hashedPassword);
 
-        $result = $this->repository->insert($entity);
+        $result = $this->repository->signUp($entity);
 
         return new SignUpOutputDto(
             id: $result->id(),

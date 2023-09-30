@@ -2,10 +2,10 @@
 
 namespace Core\Application\UseCases\User\Create;
 
-use Core\Application\UseCases\User\Create\DTO\CreateUserInputDto;
-use Core\Application\UseCases\User\Create\DTO\CreateUserOutputDto;
+use Core\Application\UseCases\User\Create\DTO\SignUpInputDto;
+use Core\Application\UseCases\User\Create\DTO\SignUpOutputDto;
 
 interface CreateUserUseCaseInterface
 {
-    public function execute(CreateUserInputDto $input): CreateUserOutputDto;
+    public function execute(SignUpInputDto $input): SignUpOutputDto;
 }

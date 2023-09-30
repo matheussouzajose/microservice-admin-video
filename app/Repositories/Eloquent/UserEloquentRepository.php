@@ -76,17 +76,15 @@ class UserEloquentRepository implements UserRepositoryInterface
 
     public function findAll(string $filter = '', string $order = 'DESC'): array
     {
-        Cache::rememberForever('users', function () use ($filter, $order) {
-            $result = $this->model->when($filter, function ($query) use ($filter) {
-                $query->where('first_name', 'LIKE', "%{$filter}%")
-                    ->orWhere('last_name', 'LIKE', "%{$filter}%")
-                    ->orWhere('email', 'LIKE', "%{$filter}%");
-            })
-                ->orderBy('first_name', $order)
-                ->get();
+        $result = $this->model->when($filter, function ($query) use ($filter) {
+            $query->where('first_name', 'LIKE', "%{$filter}%")
+                ->orWhere('last_name', 'LIKE', "%{$filter}%")
+                ->orWhere('email', 'LIKE', "%{$filter}%");
+        })
+            ->orderBy('first_name', $order)
+            ->get();
 
-            return $result->toArray();
-        });
+        return $result->toArray();
     }
 
     public function paginate(string $filter = '', string $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationInterface
