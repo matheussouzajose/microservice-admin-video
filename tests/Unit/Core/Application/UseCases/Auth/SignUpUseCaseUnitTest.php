@@ -7,7 +7,6 @@ use Core\Application\UseCases\Auth\SignUp\SignUpUseCase;
 use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Domain\Entity\User;
 use Core\Domain\Repository\AuthRepositoryInterface;
-use Core\Domain\Repository\UserRepositoryInterface;
 use Tests\TestCase;
 
 class SignUpUseCaseUnitTest extends TestCase

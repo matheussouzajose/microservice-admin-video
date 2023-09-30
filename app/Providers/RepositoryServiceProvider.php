@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\Eloquent\AuthEloquentRepository;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use App\Repositories\Eloquent\GenreEloquentRepository;
 use App\Repositories\Eloquent\VideoEloquentRepository;
 use App\Repositories\Transaction\DBTransaction;
 use Core\Application\UseCases\Interfaces\TransactionInterface;
+use Core\Domain\Repository\AuthRepositoryInterface;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
@@ -26,6 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(CastMemberRepositoryInterface::class, CastMemberEloquentRepository::class);
         $this->app->singleton(VideoRepositoryInterface::class, VideoEloquentRepository::class);
         $this->app->singleton(TransactionInterface::class, DBTransaction::class);
+        $this->app->singleton(AuthRepositoryInterface::class, AuthEloquentRepository::class);
     }
 
     /**

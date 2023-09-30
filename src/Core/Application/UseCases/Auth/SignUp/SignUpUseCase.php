@@ -34,8 +34,7 @@ class SignUpUseCase implements SignUpUseCaseInterface
             firstName: $result->firstName,
             lastName: $result->lastName,
             email: $result->email,
-            createdAt: $result->createdAt(),
-            emailVerifiedAt: $result->emailVerifiedAt
+            createdAt: $result->createdAt()
         );
     }
 }
