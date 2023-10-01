@@ -2,9 +2,9 @@
 
 namespace Core\Application\UseCases\Auth;
 
+use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
 use Core\Application\UseCases\Interfaces\HasherInterface;
 use Core\Application\UseCases\Interfaces\TransactionInterface;
-use Core\Application\UseCases\Interfaces\UserEventManagerInterface;
 use Core\Domain\Entity\User;
 use Core\Domain\Event\UserCreatedEvent;
 use Core\Domain\Exception\EmailAlreadyInUseException;
