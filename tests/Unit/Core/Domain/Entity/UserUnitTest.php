@@ -5,8 +5,8 @@ namespace Unit\Core\Domain\Entity;
 use Core\Domain\Entity\User;
 use Core\Domain\Exception\NotificationException;
 use Core\Domain\ValueObject\Image;
-use Core\Domain\ValueObject\Uuid;
-use Ramsey\Uuid\Uuid as RamseyUuid;
+use Tests\Fixtures\CreateEntity;
+use Tests\Fixtures\UserFixtures;
 use Tests\TestCase;
 
 class UserUnitTest extends TestCase
@@ -14,35 +14,18 @@ class UserUnitTest extends TestCase
     /**
      * @throws NotificationException
      */
-    private function createEntity(): User
-    {
-        $uuid = (string) RamseyUuid::uuid4();
-
-        return new User(
-            firstName: 'Clark',
-            lastName: 'Kent',
-            email: 'clark.kent@mail.com',
-            password: '123456789',
-            userAvatar: new Image('teste-path/image.png'),
-            id: new Uuid($uuid)
-        );
-    }
-
-    /**
-     * @throws NotificationException
-     */
     public function testAttributesSuccess()
     {
-        $entity = $this->createEntity();
+        $entity = CreateEntity::loadUser();
 
         $this->assertNotEmpty($entity->id());
         $this->assertNotEmpty($entity->createdAt());
 
-        $this->assertEquals('Clark', $entity->firstName);
-        $this->assertEquals('Kent', $entity->lastName);
-        $this->assertEquals('clark.kent@mail.com', $entity->email);
-        $this->assertEquals('123456789', $entity->password);
-        $this->assertEquals('teste-path/image.png', $entity->userAvatar()->path());
+        $this->assertEquals(UserFixtures::FIRST_NAME_MATHEUS, $entity->firstName);
+        $this->assertEquals(UserFixtures::LAST_NAME_MATHEUS, $entity->lastName);
+        $this->assertEquals(UserFixtures::EMAIL_MATHEUS, $entity->email);
+        $this->assertEquals(UserFixtures::DEFAULT_PASSWORD, $entity->password);
+        $this->assertEquals(UserFixtures::AVATAR_MATHEUS, $entity->userAvatar()->path());
     }
 
     /**
@@ -50,17 +33,20 @@ class UserUnitTest extends TestCase
      */
     public function testUpdateSuccess()
     {
-        $entity = $this->createEntity();
+        $entity = CreateEntity::loadUser();
+
+        $firstNameUpdated = 'João';
+        $lastNameUpdated = 'Paulo';
 
         $entity->update(
-            firstName: 'Clark updated',
-            lastName: 'Kent updated',
+            firstName: $firstNameUpdated,
+            lastName: $lastNameUpdated,
             email: $entity->email
         );
 
-        $this->assertEquals('Clark updated', $entity->firstName);
-        $this->assertEquals('Kent updated', $entity->lastName);
-        $this->assertEquals('clark.kent@mail.com', $entity->email);
+        $this->assertEquals($firstNameUpdated, $entity->firstName);
+        $this->assertEquals($lastNameUpdated, $entity->lastName);
+        $this->assertEquals(UserFixtures::EMAIL_MATHEUS, $entity->email);
         $this->assertNotEmpty($entity->updatedAt);
     }
 
@@ -69,16 +55,17 @@ class UserUnitTest extends TestCase
      */
     public function testUpdateAvatarUrlSuccess()
     {
-        $entity = $this->createEntity();
+        $entity = CreateEntity::loadUser();
 
-        $avatarUrl = new Image('path/clark-kent.jpg');
+        $image = 'path/clark-kent.jpg';
+        $avatarUrl = new Image($image);
         $entity->setUserAvatar(
             path: $avatarUrl
         );
 
         $this->assertNotNull($entity->userAvatar());
         $this->assertInstanceOf(Image::class, $entity->userAvatar());
-        $this->assertEquals('path/clark-kent.jpg', $entity->userAvatar()->path());
+        $this->assertEquals($image, $entity->userAvatar()->path());
         $this->assertNotEmpty($entity->updatedAt);
     }
 
@@ -87,13 +74,14 @@ class UserUnitTest extends TestCase
      */
     public function testUpdatePassword()
     {
-        $entity = $this->createEntity();
+        $entity = CreateEntity::loadUser();
 
+        $password = '987654321';
         $entity->updatePassword(
-            password: '987654321'
+            password: $password
         );
 
-        $this->assertEquals('987654321', $entity->password);
+        $this->assertEquals($password, $entity->password);
         $this->assertNotEmpty($entity->updatedAt);
     }
 

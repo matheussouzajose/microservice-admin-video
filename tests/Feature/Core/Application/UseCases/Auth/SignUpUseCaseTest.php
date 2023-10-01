@@ -9,6 +9,7 @@ use Core\Domain\Repository\AuthRepositoryInterface;
 use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 use Core\Intermediate\Dtos\Auth\SignUpInputDto;
 use Illuminate\Support\Facades\Event;
+use Tests\Fixtures\UserFixtures;
 use Tests\Stubs\HasherStub;
 use Tests\Stubs\TransactionStub;
 use Tests\Stubs\UserEventStub;
@@ -16,7 +17,6 @@ use Tests\TestCase;
 
 class SignUpUseCaseTest extends TestCase
 {
-
     private function makeSut(): SignUpUseCaseInterface
     {
         return new SignUpUseCase(
@@ -30,10 +30,10 @@ class SignUpUseCaseTest extends TestCase
     private function makeInputDto(): SignUpInputDto
     {
         return new SignUpInputDto(
-            firstName: 'Matheus',
-            lastName: 'Jose',
-            email: 'matheus.jose@mail.com',
-            password: '123456789'
+            firstName: UserFixtures::FIRST_NAME_MATHEUS,
+            lastName: UserFixtures::LAST_NAME_MATHEUS,
+            email: UserFixtures::EMAIL_MATHEUS,
+            password: UserFixtures::DEFAULT_PASSWORD
         );
     }
 
@@ -43,7 +43,7 @@ class SignUpUseCaseTest extends TestCase
         $this->expectExceptionMessage("Email already in use");
 
         User::factory()->create([
-           'email' => 'matheus.jose@mail.com'
+           'email' => UserFixtures::EMAIL_MATHEUS
         ]);
 
         $useCase = $this->makeSut();
@@ -91,8 +91,8 @@ class SignUpUseCaseTest extends TestCase
 
         $this->assertNotEmpty($response->id);
         $this->assertNotEmpty($response->createdAt);
-        $this->assertEquals('Matheus', $response->firstName);
-        $this->assertEquals('Jose', $response->lastName);
-        $this->assertEquals('matheus.jose@mail.com', $response->email);
+        $this->assertEquals(UserFixtures::FIRST_NAME_MATHEUS, $response->firstName);
+        $this->assertEquals(UserFixtures::LAST_NAME_MATHEUS, $response->lastName);
+        $this->assertEquals(UserFixtures::EMAIL_MATHEUS, $response->email);
     }
 }

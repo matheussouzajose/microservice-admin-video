@@ -2,47 +2,69 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Auth;
 
-use Core\Domain\Entity\User;
+use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
+use Core\Application\UseCases\Auth\SignUpUseCase;
+use Core\Application\UseCases\Interfaces\HasherInterface;
+use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Exception\EmailAlreadyInUseException;
+use Core\Domain\Exception\NotificationException;
+use Core\Domain\Repository\AuthRepositoryInterface;
 use Core\Intermediate\Dtos\Auth\SignUpInputDto;
+use Tests\Fixtures\CreateEntity;
+use Tests\Fixtures\UserFixtures;
 use Tests\TestCase;
-use Tests\Unit\Core\Application\Mocks\SignUpUseCaseMock;
+
 
 class SignUpUseCaseUnitTest extends TestCase
 {
-    private function createEntity(): User
+
+    private function makeSut(): object
     {
-        return new User(
-            firstName: 'Matheus',
-            lastName: 'Jose',
-            email: 'matheus.jose@mail.com',
-            emailVerifiedAt: null
+        $repository = \Mockery::spy(AuthRepositoryInterface::class);
+        $hasher = \Mockery::spy(HasherInterface::class);
+        $eventManager = \Mockery::spy(UserEventManagerInterface::class);
+        $transaction = \Mockery::spy(TransactionInterface::class);
+
+        $useCase = new SignUpUseCase(
+            repository: $repository,
+            hasher: $hasher,
+            eventManager: $eventManager,
+            transaction: $transaction,
         );
+
+        return (object)[
+            'repository' => $repository,
+            'hasher' => $hasher,
+            'eventManager' => $eventManager,
+            'transaction' => $transaction,
+            'useCase' => $useCase,
+        ];
     }
 
-    private function createInputDto(): SignUpInputDto
+    private function makeInputDto(): SignUpInputDto
     {
         return \Mockery::spy(SignUpInputDto::class, [
-            'Matheus',
-            'Jose',
-            'matheus.jose@gmail.com',
-            '123456789',
+            UserFixtures::FIRST_NAME_MATHEUS,
+            UserFixtures::LAST_NAME_MATHEUS,
+            UserFixtures::EMAIL_MATHEUS,
+            UserFixtures::DEFAULT_PASSWORD,
         ]);
     }
 
     /**
      * @dataProvider  externalMethodWithValueProvider
+     * @throws NotificationException
      */
-    public function testCallExternalMethodsWithCorrectValue(string $external, string $method, string $value)
+    public function testCallExternalMethodsWithCorrectValue(string $external, string $method, ?string $value = null)
     {
-        $sut = (new SignUpUseCaseMock())->make();
-        $sut->getRepository()->shouldReceive('signUp')->andReturn($this->createEntity());
+        $sut = $this->makeSut();
+        $sut->repository->shouldReceive('signUp')->andReturn(CreateEntity::loadUser());
 
-        $sut->getUseCase()->execute(
-            input: $this->createInputDto()
+        $sut->useCase->execute(
+            input: $this->makeInputDto()
         );
 
-        $result = $sut->{$external}()->shouldHaveReceived($method)->once();
+        $result = $sut->{$external}->shouldHaveReceived($method)->once();
         if (! empty($value)) {
             $result->with($value);
         }
@@ -51,11 +73,11 @@ class SignUpUseCaseUnitTest extends TestCase
     public function externalMethodWithValueProvider(): array
     {
         return [
-            ['getRepository', 'checkByEmail', 'matheus.jose@gmail.com'],
-            ['getHasher', 'hash', '123456789'],
-            ['getRepository', 'signUp', ''],
-            ['getEventManager', 'dispatch', ''],
-            ['getTransaction', 'commit', ''],
+            ['repository', 'checkByEmail', UserFixtures::EMAIL_MATHEUS],
+            ['hasher', 'hash', UserFixtures::DEFAULT_PASSWORD],
+            ['repository', 'signUp'],
+            ['eventManager', 'dispatch'],
+            ['transaction', 'commit'],
         ];
     }
 
@@ -66,23 +88,24 @@ class SignUpUseCaseUnitTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $sut = (new SignUpUseCaseMock())->make();
-        $sut->{$external}()->shouldReceive($method)->andThrow(new \Exception());
-        $sut->getUseCase()->execute(
-            input: $this->createInputDto()
+        $sut = $this->makeSut();
+
+        $sut->{$external}->shouldReceive($method)->andThrow(new \Exception());
+        $sut->useCase->execute(
+            input: $this->makeInputDto()
         );
 
-        $sut->getTransaction()->shouldHaveReceived('roolback')->once();
+        $sut->transaction->shouldHaveReceived('roolback')->once();
     }
 
     public function externalMethodProvider(): array
     {
         return [
-            ['getRepository', 'checkByEmail'],
-            ['getRepository', 'signUp'],
-            ['getHasher', 'hash'],
-            ['getEventManager', 'dispatch'],
-            ['getTransaction', 'commit'],
+            ['repository', 'checkByEmail'],
+            ['repository', 'signUp'],
+            ['hasher', 'hash'],
+            ['eventManager', 'dispatch'],
+            ['transaction', 'commit'],
         ];
     }
 
@@ -91,23 +114,24 @@ class SignUpUseCaseUnitTest extends TestCase
         $this->expectException(EmailAlreadyInUseException::class);
         $this->expectExceptionMessage('Email already in use');
 
-        $sut = (new SignUpUseCaseMock())->make();
-
-        $sut->getRepository()->shouldReceive('checkByEmail')->andReturn(true);
-
-        $sut->getUseCase()->execute(
-            input: $this->createInputDto()
+        $sut = $this->makeSut();
+        $sut->repository->shouldReceive('checkByEmail')->andReturn(true);
+        $sut->useCase->execute(
+            input: $this->makeInputDto()
         );
     }
 
+    /**
+     * @throws NotificationException
+     */
     public function testSignUpSuccess()
     {
-        $sut = (new SignUpUseCaseMock())->make();
-        $entity = $this->createEntity();
-        $sut->getRepository()->shouldReceive('signUp')->andReturn($entity);
+        $sut = $this->makeSut();
+        $entity = CreateEntity::loadUser();
+        $sut->repository->shouldReceive('signUp')->andReturn($entity);
 
-        $response = $sut->getUseCase()->execute(
-            input: $this->createInputDto()
+        $response = $sut->useCase->execute(
+            input: $this->makeInputDto()
         );
 
         $this->assertNotEmpty($response->id);

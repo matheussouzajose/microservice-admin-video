@@ -19,6 +19,6 @@ class SendEmailUserRegistered
      */
     public function handle(object $event): void
     {
-//        dd($event);
+        //        dd($event);
     }
 }
