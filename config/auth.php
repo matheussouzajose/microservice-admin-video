@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'keycloak',
+            'driver' => 'sanctum',
             'provider' => 'users',
         ],
     ],
