@@ -2,6 +2,7 @@
 
 namespace App\Services\AMQP;
 
+use Core\Domain\Services\AMQPInterface;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exchange\AMQPExchangeType;
 use PhpAmqpLib\Message\AMQPMessage;

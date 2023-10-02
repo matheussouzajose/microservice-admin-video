@@ -56,6 +56,10 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'url_web' => env('APP_URL_WEB', 'http://localhost:3000'),
+
+    'url_web_verify_email' => config('url_web') . '/verify-email',
+
     'asset_url' => env('ASSET_URL'),
 
     /*
@@ -82,7 +86,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------

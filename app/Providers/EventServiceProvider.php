@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Listeners\SendEmailUserRegistered;
+use App\Events\UserRegistered;
+use App\Listeners\SendEmailVerificationToUser;
 use App\Listeners\SendVideoToMicroEncoder;
 use Core\Domain\Event\UserCreatedEvent;
 use Core\Domain\Event\VideoCreatedEvent;
@@ -22,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        UserRegistered::class => [
+            SendEmailVerificationToUser::class, 'handle'
+        ]
 
     ];
 
@@ -39,7 +43,7 @@ class EventServiceProvider extends ServiceProvider
 
         Event::listen(
             UserCreatedEvent::class,
-            [SendEmailUserRegistered::class, 'handle']
+            [SendEmailVerificationToUser::class, 'handle']
         );
     }
 

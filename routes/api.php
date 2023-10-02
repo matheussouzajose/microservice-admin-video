@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/me', function () {
-    Log::warning('test;');
+    Log::warning('test');
 
+    $user = \App\Models\User::factory()->create([
+        'email_verified_at' => null
+    ]);
+
+    event(new \Core\Domain\Event\UserCreatedEvent(
+        user: new \Core\Domain\Entity\User(
+            firstName: 'Matheus',
+            lastName: 'Jose',
+            email: 'matheussouzajose97@gmail.com'
+        )
+    ));
     return response()->json(['message' => 'mse']);
 });
 

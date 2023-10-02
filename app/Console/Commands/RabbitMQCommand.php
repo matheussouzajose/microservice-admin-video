@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Services\AMQP\AMQPInterface;
 use Core\Application\UseCases\Video\ChangeEncodedPathVideoUseCase;
+use Core\Domain\Services\AMQPInterface;
 use Core\Intermediate\Dtos\Video\ChangeEncodedVideoInputDto;
 use Illuminate\Console\Command;
 

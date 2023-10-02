@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\AMQP;
+namespace Core\Domain\Services;
 
 interface AMQPInterface
 {

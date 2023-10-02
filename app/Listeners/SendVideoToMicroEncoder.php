@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Services\AMQP\AMQPInterface;
+use Core\Domain\Services\AMQPInterface;
 
 class SendVideoToMicroEncoder
 {
