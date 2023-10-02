@@ -15,12 +15,12 @@ class ApiAdapter
         protected PaginationInterface $response,
         protected string|JsonResource $resource = ''
     ) {
-        $this->validResource();
+        $this->validResource($resource);
     }
 
-    private function validResource(): void
+    private function validResource(string|JsonResource $resource): void
     {
-        if (! is_subclass_of($this->resource, JsonResource::class)) {
+        if (! is_subclass_of($resource, JsonResource::class)) {
             $this->resource = DefaultResource::class;
         }
     }

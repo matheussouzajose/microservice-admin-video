@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Core\Application\UseCases\Auth\SignUpUseCase;
 use Core\Application\UseCases\CastMember\CreateCastMemberUseCase;
 use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
 use Core\Application\UseCases\CastMember\ListCastMemberUseCase;
@@ -22,6 +23,7 @@ use Core\Application\UseCases\Video\DeleteVideoUseCase;
 use Core\Application\UseCases\Video\ListVideoUseCase;
 use Core\Application\UseCases\Video\PaginateVideosUseCase;
 use Core\Application\UseCases\Video\UpdateVideoUseCase;
+use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 use Core\Domain\UseCases\CastMember\CreateCastMemberUseCaseInterface;
 use Core\Domain\UseCases\CastMember\DeleteCastMemberUseCaseInterface;
 use Core\Domain\UseCases\CastMember\ListCastMemberUseCaseInterface;
@@ -74,6 +76,8 @@ class UseCaseServiceProvider extends ServiceProvider
         $this->app->singleton(ListVideoUseCaseInterface::class, ListVideoUseCase::class);
         $this->app->singleton(PaginateVideosUseCaseInterface::class, PaginateVideosUseCase::class);
         $this->app->singleton(UpdateVideoUseCaseInterface::class, UpdateVideoUseCase::class);
+
+        $this->app->singleton(SignUpUseCaseInterface::class, SignUpUseCase::class);
     }
 
     /**
