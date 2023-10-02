@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use Core\Application\UseCases\Interfaces\TransactionInterface;
+use Core\Domain\Repository\TransactionInterface;
 
 class TransactionStub implements TransactionInterface
 {

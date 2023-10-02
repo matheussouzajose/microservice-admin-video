@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Application\UseCases\Interfaces;
+namespace Core\Domain\Services;
 
 interface FileStorageInterface
 {

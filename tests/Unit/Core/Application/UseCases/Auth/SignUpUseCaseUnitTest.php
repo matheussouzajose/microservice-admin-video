@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Auth;
 
-use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
 use Core\Application\UseCases\Auth\SignUpUseCase;
-use Core\Application\UseCases\Interfaces\HasherInterface;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
+use Core\Domain\Event\Interfaces\UserEventManagerInterface;
 use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Exception\NotificationException;
 use Core\Domain\Repository\AuthRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
+use Core\Domain\Services\HasherInterface;
 use Core\Intermediate\Dtos\Auth\SignUpInputDto;
 use Tests\Fixtures\CreateEntity;
 use Tests\Fixtures\UserFixtures;

@@ -2,11 +2,11 @@
 
 namespace Core\Application\UseCases\Genre;
 
-use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Builder\Genre\GenreBuilderInterface;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 
 abstract class BaseGenreUseCase
 {

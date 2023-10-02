@@ -3,10 +3,10 @@
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
 use Core\Application\UseCases\Genre\CreateGenreUseCase;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Entity\Genre as EntityGenre;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
 use Core\Intermediate\Dtos\Genre\CreateGenreInputDto;
 use Core\Intermediate\Dtos\Genre\CreateGenreOutputDto;

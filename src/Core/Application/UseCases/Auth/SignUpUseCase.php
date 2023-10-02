@@ -2,14 +2,14 @@
 
 namespace Core\Application\UseCases\Auth;
 
-use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
-use Core\Application\UseCases\Interfaces\HasherInterface;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Entity\User;
+use Core\Domain\Event\Interfaces\UserEventManagerInterface;
 use Core\Domain\Event\UserCreatedEvent;
 use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Exception\NotificationException;
 use Core\Domain\Repository\AuthRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
+use Core\Domain\Services\HasherInterface;
 use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 use Core\Intermediate\Dtos\Auth\SignUpInputDto;
 use Core\Intermediate\Dtos\Auth\SignUpOutputDto;

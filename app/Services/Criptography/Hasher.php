@@ -2,7 +2,7 @@
 
 namespace App\Services\Criptography;
 
-use Core\Application\UseCases\Interfaces\HasherInterface;
+use Core\Domain\Services\HasherInterface;
 use Illuminate\Support\Facades\Hash;
 
 class Hasher implements HasherInterface

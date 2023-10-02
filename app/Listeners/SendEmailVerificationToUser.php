@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Services\Notifications\UserNotificationInterface;
+use Core\Domain\Services\UserNotificationInterface;
 
 class SendEmailVerificationToUser
 {

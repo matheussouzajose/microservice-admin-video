@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Notifications;
+namespace Core\Domain\Services;
 
 interface UserNotificationInterface extends NotificationInterface
 {

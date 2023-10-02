@@ -8,12 +8,12 @@ use App\Services\AMQP\PhpAmqpService;
 use App\Services\Criptography\Hasher;
 use App\Services\FileStorage\FileStorage;
 use App\Services\Notifications\SendUserEmailVerification;
-use App\Services\Notifications\UserNotificationInterface;
-use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
-use Core\Application\UseCases\Interfaces\FileStorageInterface;
-use Core\Application\UseCases\Interfaces\HasherInterface;
-use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
+use Core\Domain\Event\Interfaces\UserEventManagerInterface;
+use Core\Domain\Event\Interfaces\VideoEventManagerInterface;
 use Core\Domain\Services\AMQPInterface;
+use Core\Domain\Services\FileStorageInterface;
+use Core\Domain\Services\HasherInterface;
+use Core\Domain\Services\UserNotificationInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
+use Core\Domain\Event\Interfaces\UserEventManagerInterface;
 
 class UserEventStub implements UserEventManagerInterface
 {

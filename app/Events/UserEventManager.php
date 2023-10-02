@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use Core\Application\UseCases\Auth\Interfaces\UserEventManagerInterface;
+use Core\Domain\Event\Interfaces\UserEventManagerInterface;
 
 class UserEventManager implements UserEventManagerInterface
 {

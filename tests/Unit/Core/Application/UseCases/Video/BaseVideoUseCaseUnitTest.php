@@ -2,16 +2,16 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Interfaces\FileStorageInterface;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
-use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\Rating;
+use Core\Domain\Event\Interfaces\VideoEventManagerInterface;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Domain\Services\FileStorageInterface;
 use Tests\TestCase;
 
 abstract class BaseVideoUseCaseUnitTest extends TestCase

@@ -3,6 +3,7 @@
 namespace App\Services\Notifications;
 
 use App\Notifications\UserEmailVerification;
+use Core\Domain\Services\UserNotificationInterface;
 use Illuminate\Notifications\Notifiable;
 
 class SendUserEmailVerification implements UserNotificationInterface

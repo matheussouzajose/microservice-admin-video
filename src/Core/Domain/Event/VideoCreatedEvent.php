@@ -3,6 +3,7 @@
 namespace Core\Domain\Event;
 
 use Core\Domain\Entity\Video;
+use Core\Domain\Event\Interfaces\EventInterface;
 
 class VideoCreatedEvent implements EventInterface
 {

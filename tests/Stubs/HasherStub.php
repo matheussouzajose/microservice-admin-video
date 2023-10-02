@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use Core\Application\UseCases\Interfaces\HasherInterface;
+use Core\Domain\Services\HasherInterface;
 
 class HasherStub implements HasherInterface
 {

@@ -3,11 +3,11 @@
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
 use Core\Application\UseCases\Genre\UpdateGenreUseCase;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Entity\Genre as EntityGenre;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
 use Core\Intermediate\Dtos\Genre\UpdateGenreInputDto;
 use Core\Intermediate\Dtos\Genre\UpdateGenreOutputDto;

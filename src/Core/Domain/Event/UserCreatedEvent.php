@@ -3,6 +3,7 @@
 namespace Core\Domain\Event;
 
 use Core\Domain\Entity\User;
+use Core\Domain\Event\Interfaces\EventInterface;
 
 class UserCreatedEvent implements EventInterface
 {
