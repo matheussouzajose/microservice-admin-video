@@ -13,4 +13,6 @@ interface AuthRepositoryInterface
     public function findByEmail(string $email): User;
 
     public function createTokenByUserId(string $id): string;
+
+    public function logout(string $id): bool;
 }
