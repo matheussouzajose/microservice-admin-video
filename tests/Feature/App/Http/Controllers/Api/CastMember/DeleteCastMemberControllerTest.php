@@ -9,7 +9,7 @@ use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class DeleteCastMemberControllerFeatureTest extends TestCase
+class DeleteCastMemberControllerTest extends TestCase
 {
     protected CastMemberEloquentRepository $repository;
 

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Tests\TestCase;
 
-class ListCastMembersControllerFeatureTest extends TestCase
+class ListCastMembersControllerTest extends TestCase
 {
     protected CastMemberEloquentRepository $repository;
 

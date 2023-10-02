@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class CreateCastMemberControllerFeatureTest extends TestCase
+class CreateCastMemberControllerTest extends TestCase
 {
     protected CastMemberEloquentRepository $repository;
 

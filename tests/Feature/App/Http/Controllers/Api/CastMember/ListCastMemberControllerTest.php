@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class ListCastMemberControllerFeatureTest extends TestCase
+class ListCastMemberControllerTest extends TestCase
 {
     protected CastMemberEloquentRepository $repository;
 

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class UpdateCategoryControllerFeatureTest extends TestCase
+class UpdateCategoryControllerTest extends TestCase
 {
     protected CategoryEloquentRepository $repository;
 

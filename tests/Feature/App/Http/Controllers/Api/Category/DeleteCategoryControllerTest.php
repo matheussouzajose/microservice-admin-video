@@ -9,7 +9,7 @@ use Core\Application\UseCases\Category\DeleteCategoryUseCase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class DeleteCategoryControllerFeatureTest extends TestCase
+class DeleteCategoryControllerTest extends TestCase
 {
     protected CategoryEloquentRepository $repository;
 
