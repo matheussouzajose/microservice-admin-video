@@ -8,7 +8,6 @@ use Core\Domain\Services\HasherInterface;
 use Core\Domain\UseCases\Auth\SignInUseCaseInterface;
 use Core\Intermediate\Dtos\Auth\SignInInputDto;
 use Core\Intermediate\Dtos\Auth\SignInOutputDto;
-use Illuminate\Support\Facades\Lang;
 
 class SignInUseCase implements SignInUseCaseInterface
 {
@@ -24,6 +23,7 @@ class SignInUseCase implements SignInUseCaseInterface
     public function execute(SignInInputDto $input): SignInOutputDto
     {
         $user = $this->repository->findByEmail($input->email);
+
         $this->comparePassword($input->password, $user->password);
         $token = $this->repository->createTokenByUserId(
             id: $user->id

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSignUpRequest;
-use App\Http\Resources\UserResource;
 use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 use Core\Intermediate\Dtos\Auth\SignUpInputDto;
 use Illuminate\Http\JsonResponse;

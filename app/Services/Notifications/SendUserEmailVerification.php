@@ -20,7 +20,7 @@ class SendUserEmailVerification implements UserNotificationInterface
     public function send(array $payload): void
     {
         $this->payload = (object) $payload;
-        $this->notify(new UserEmailVerification);
+        $this->notify(new UserEmailVerification());
     }
 
     public function getKey(): string

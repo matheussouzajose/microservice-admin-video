@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +35,7 @@ Route::prefix('v1')->group(function () {
 
     Route::group([], base_path('routes/api/auth.php'));
 
-    Route::middleware(['auth:api', 'can:admin-catalog'])->group(function () {
+    Route::middleware(['auth:api', /*'can:admin-catalog'*/])->group(function () {
         Route::get('/me', function () {
             return response()->json(['message' => 'mse']);
         });

@@ -14,7 +14,6 @@ use Core\Intermediate\Dtos\Auth\SignInInputDto;
 use Tests\Fixtures\UserFixtures;
 use Tests\TestCase;
 
-
 class SignInUseCaseUnitTest extends TestCase
 {
     private function makeSut(): object

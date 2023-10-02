@@ -6,7 +6,6 @@ use Core\Domain\Services\UserNotificationInterface;
 
 class SendEmailVerificationToUser
 {
-
     /**
      * Create the event listener.
      *
@@ -28,8 +27,8 @@ class SendEmailVerificationToUser
             );
         }
 
-//        if (!$event->user->hasVerifiedEmail()) {
-//            $event->user->sendEmailVerificationNotification();
-//        }
+        //        if (!$event->user->hasVerifiedEmail()) {
+        //            $event->user->sendEmailVerificationNotification();
+        //        }
     }
 }

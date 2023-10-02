@@ -50,7 +50,7 @@ class SignUpUseCase implements SignUpUseCaseInterface
                 password: $hashedPassword
             );
 
-            $result = $this->repository->signUp(
+            $result = $this->repository->insert(
                 entity: $entity
             );
 

@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
@@ -48,7 +47,7 @@ class UserEmailVerification extends Notification
 
         $url = config('app.url_web_verify_email') . "?{$queryBuild}";
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(Lang::get('Verify Email Address'))
             ->line(Lang::get('Please click the button below to verify your email address.'))
             ->action(Lang::get('Verify Email Address'), url($url))

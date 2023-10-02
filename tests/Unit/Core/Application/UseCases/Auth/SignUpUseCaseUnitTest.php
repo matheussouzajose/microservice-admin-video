@@ -14,10 +14,8 @@ use Tests\Fixtures\CreateEntity;
 use Tests\Fixtures\UserFixtures;
 use Tests\TestCase;
 
-
 class SignUpUseCaseUnitTest extends TestCase
 {
-
     private function makeSut(): object
     {
         $repository = \Mockery::spy(AuthRepositoryInterface::class);
@@ -58,7 +56,7 @@ class SignUpUseCaseUnitTest extends TestCase
     public function testCallExternalMethodsWithCorrectValue(string $external, string $method, ?string $value = null)
     {
         $sut = $this->makeSut();
-        $sut->repository->shouldReceive('signUp')->andReturn(CreateEntity::loadUser());
+        $this->applyDefaultValue($sut);
 
         $sut->useCase->execute(
             input: $this->makeInputDto()
@@ -75,7 +73,7 @@ class SignUpUseCaseUnitTest extends TestCase
         return [
             ['repository', 'checkByEmail', UserFixtures::EMAIL_MATHEUS],
             ['hasher', 'hash', UserFixtures::DEFAULT_PASSWORD],
-            ['repository', 'signUp'],
+            ['repository', 'insert'],
             ['eventManager', 'dispatch'],
             ['transaction', 'commit'],
         ];
@@ -89,7 +87,6 @@ class SignUpUseCaseUnitTest extends TestCase
         $this->expectException(\Exception::class);
 
         $sut = $this->makeSut();
-
         $sut->{$external}->shouldReceive($method)->andThrow(new \Exception());
         $sut->useCase->execute(
             input: $this->makeInputDto()
@@ -102,7 +99,7 @@ class SignUpUseCaseUnitTest extends TestCase
     {
         return [
             ['repository', 'checkByEmail'],
-            ['repository', 'signUp'],
+            ['repository', 'insert'],
             ['hasher', 'hash'],
             ['eventManager', 'dispatch'],
             ['transaction', 'commit'],
@@ -127,17 +124,24 @@ class SignUpUseCaseUnitTest extends TestCase
     public function testSignUpSuccess()
     {
         $sut = $this->makeSut();
-        $entity = CreateEntity::loadUser();
-        $sut->repository->shouldReceive('signUp')->andReturn($entity);
+        $this->applyDefaultValue($sut);
 
         $response = $sut->useCase->execute(
             input: $this->makeInputDto()
         );
 
         $this->assertNotEmpty($response->id);
-        $this->assertEquals($entity->firstName, $response->firstName);
-        $this->assertEquals($entity->lastName, $response->lastName);
-        $this->assertEquals($entity->email, $response->email);
+        $this->assertEquals(UserFixtures::FIRST_NAME_MATHEUS, $response->firstName);
+        $this->assertEquals(UserFixtures::LAST_NAME_MATHEUS, $response->lastName);
+        $this->assertEquals(UserFixtures::EMAIL_MATHEUS, $response->email);
         $this->assertNotEmpty($response->createdAt);
+    }
+
+    /**
+     * @throws NotificationException
+     */
+    private function applyDefaultValue(object $sut): void
+    {
+        $sut->repository->shouldReceive('insert')->andReturn(CreateEntity::loadUser());
     }
 }

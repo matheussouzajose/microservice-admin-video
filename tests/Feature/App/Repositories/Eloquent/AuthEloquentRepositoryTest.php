@@ -6,7 +6,10 @@ use App\Models\User as Model;
 use App\Repositories\Eloquent\AuthEloquentRepository;
 use App\Services\Criptography\Hasher;
 use Core\Domain\Entity\User;
+use Core\Domain\Exception\NotFoundException;
+use Core\Domain\Exception\NotificationException;
 use Core\Domain\Repository\AuthRepositoryInterface;
+use Tests\Fixtures\UserFixtures;
 use Tests\TestCase;
 
 class AuthEloquentRepositoryTest extends TestCase
@@ -41,7 +44,7 @@ class AuthEloquentRepositoryTest extends TestCase
         $hashedPassword = (new Hasher())->hash('123456');
         $entity->updatePassword($hashedPassword);
 
-        $this->repository->signUp($entity);
+        $this->repository->insert($entity);
 
         $this->assertDatabaseHas('users', [
             'id' => $entity->id(),
@@ -50,5 +53,50 @@ class AuthEloquentRepositoryTest extends TestCase
             'email' => $entity->email,
             'password' => $entity->password,
         ]);
+    }
+
+    /**
+     * @throws NotificationException
+     */
+    public function testFindByEmailThrows()
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage("User " .  UserFixtures::EMAIL_MATHEUS . " Not Found");
+
+        $this->repository->findByEmail(UserFixtures::EMAIL_MATHEUS);
+    }
+
+    public function testFindByEmailSuccess()
+    {
+        Model::factory()->create([
+            'email' => UserFixtures::EMAIL_MATHEUS
+        ]);
+
+        $result = $this->repository->findByEmail(UserFixtures::EMAIL_MATHEUS);
+        $this->assertEquals(UserFixtures::EMAIL_MATHEUS, $result->email);
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function testCreateTokenByUserIdThrows()
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage("User " .  UserFixtures::UUID_MATHEUS . " Not Found");
+        $result = $this->repository->createTokenByUserId(UserFixtures::UUID_MATHEUS);
+        $this->assertNotEmpty($result);
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function testCreateTokenByUserIdSuccess()
+    {
+        $user = Model::factory()->create([
+            'email' => UserFixtures::EMAIL_MATHEUS
+        ]);
+
+        $result = $this->repository->createTokenByUserId($user->id);
+        $this->assertNotEmpty($result);
     }
 }

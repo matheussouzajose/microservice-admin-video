@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User as Model;
 use Core\Domain\Entity\User;
+use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Exception\NotificationException;
 use Core\Domain\Repository\AuthRepositoryInterface;
 use Core\Domain\ValueObject\Image;
@@ -18,7 +19,7 @@ class AuthEloquentRepository implements AuthRepositoryInterface
     /**
      * @throws NotificationException
      */
-    public function signUp(User $entity): User
+    public function insert(User $entity): User
     {
         $result = $this->model->create([
             'id' => $entity->id(),
@@ -41,6 +42,7 @@ class AuthEloquentRepository implements AuthRepositoryInterface
             firstName: $data->first_name,
             lastName: $data->last_name,
             email: $data->email,
+            password: $data->password,
             id: new Uuid($data->id),
             emailVerifiedAt: $data->email_verified_at,
             createdAt: $data->created_at,
@@ -59,5 +61,29 @@ class AuthEloquentRepository implements AuthRepositoryInterface
     public function checkByEmail(string $email): bool
     {
         return $this->model->where('email', $email)->exists();
+    }
+
+    /**
+     * @throws NotFoundException
+     * @throws NotificationException
+     */
+    public function findByEmail(string $email): User
+    {
+        if (! $result = $this->model->where('email', $email)->first()) {
+            throw new NotFoundException("User {$email} Not Found");
+        }
+
+        return $this->convertObjectToEntity($result);
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function createTokenByUserId(string $id): string
+    {
+        if (! $result = $this->model->find($id)) {
+            throw new NotFoundException("User {$id} Not Found");
+        }
+        return $result->createToken('authtoken')->plainTextToken;
     }
 }
