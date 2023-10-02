@@ -9,7 +9,10 @@ use App\Models\User;
 use App\Repositories\Eloquent\AuthEloquentRepository;
 use App\Repositories\Transaction\DBTransaction;
 use App\Services\Criptography\Hasher;
+use Core\Application\UseCases\Auth\SignInUseCase;
 use Core\Application\UseCases\Auth\SignUpUseCase;
+use Core\Domain\Repository\AuthRepositoryInterface;
+use Core\Domain\UseCases\Auth\SignInUseCaseInterface;
 use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -18,28 +21,44 @@ use Tests\TestCase;
 
 class SignUpControllerTest extends TestCase
 {
+    protected AuthRepositoryInterface $repository;
+
+    public function setUp(): void
+    {
+        $this->repository = new AuthEloquentRepository(
+            model: new User()
+        );
+
+        parent::setUp();
+    }
+
     public function testSignUpSuccess()
     {
-        $useCase = $this->makeUseCase();
-        $request = $this->makeRequest();
+        $signUpUseCase = $this->makeSignUpUseCase();
+        $signInUseCase = $this->makeSignInUseCase();
 
-        $response = (new SignUpController($useCase))($request);
+        $request = $this->makeRequest();
+        $response = (new SignUpController($signUpUseCase, $signInUseCase))($request);
 
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertEquals(Response::HTTP_CREATED, $response->status());
     }
 
-    private function makeUseCase(): SignUpUseCaseInterface
+    private function makeSignUpUseCase(): SignUpUseCaseInterface
     {
-        $repository = new AuthEloquentRepository(
-            model: new User()
-        );
-
         return new SignUpUseCase(
-            repository: $repository,
+            repository: $this->repository,
             hasher: new Hasher(),
             eventManager: new UserEventManager(),
             transaction: new DBTransaction()
+        );
+    }
+
+    private function makeSignInUseCase(): SignInUseCaseInterface
+    {
+        return new SignInUseCase(
+            repository: $this->repository,
+            hasher: new Hasher()
         );
     }
 

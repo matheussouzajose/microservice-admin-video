@@ -48,6 +48,9 @@ class AuthApiTest extends TestCase
         $this->assertEquals($data['first_name'], $response['data']['first_name']);
         $this->assertEquals($data['last_name'], $response['data']['last_name']);
         $this->assertEquals($data['email'], $response['data']['email']);
+
+        $this->assertNotEmpty($data['email'], $response['access_token']);
+        $this->assertEquals('Bearer', $response['token_type']);
     }
 
     public function testStoreSignInValidationFalse()

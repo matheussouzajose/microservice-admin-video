@@ -50,9 +50,10 @@ class ApiAdapter
         //
     }
 
-    public static function json(object $data, int $statusCode = 200): JsonResponse
+    public static function json(object $data, int $statusCode = 200, array $additional = []): JsonResponse
     {
         return (new DefaultResource($data))
+            ->additional($additional)
             ->response()
             ->setStatusCode($statusCode);
     }
