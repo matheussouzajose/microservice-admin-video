@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Category;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Application\UseCases\Category\Paginate\DTO\PaginateCategoriesInputDto;
-use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCaseInterface;
+use Core\Domain\UseCases\Category\PaginateCategoriesUseCaseInterface;
+use Core\Intermediate\Dtos\Category\PaginateCategoriesInputDto;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

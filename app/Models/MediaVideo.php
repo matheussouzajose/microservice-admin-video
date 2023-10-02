@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MediaVideo extends Model
 {
-    use HasFactory, UuidTrait;
+    use HasFactory;
+    use UuidTrait;
 
     /** @var string */
     protected $table = 'medias_video';

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\CastMember;
 
 use App\Http\Controllers\Controller;
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCaseInterface;
-use Core\Application\UseCases\CastMember\Delete\DTO\DeleteCastMemberInputDto;
+use Core\Domain\UseCases\CastMember\DeleteCastMemberUseCaseInterface;
+use Core\Intermediate\Dtos\CastMember\DeleteCastMemberInputDto;
 use Illuminate\Http\Response;
 
 class DeleteCastMemberController extends Controller

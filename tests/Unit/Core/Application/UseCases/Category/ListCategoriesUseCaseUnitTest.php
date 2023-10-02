@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Category;
 
-use Core\Application\UseCases\Category\Paginate\DTO\PaginateCategoriesInputDto;
-use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCase;
+use Core\Application\UseCases\Category\PaginateCategoriesUseCase;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;
+use Core\Intermediate\Dtos\Category\PaginateCategoriesInputDto;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Core\Application\UseCases\UseCaseTrait;
 

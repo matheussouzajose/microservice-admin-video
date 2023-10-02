@@ -2,10 +2,10 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\Create\CreateVideoUseCase;
-use Core\Application\UseCases\Video\Create\DTO\CreateVideoInputDto;
-use Core\Application\UseCases\Video\Create\DTO\CreateVideoOutputDto;
+use Core\Application\UseCases\Video\CreateVideoUseCase;
 use Core\Domain\Enum\Rating;
+use Core\Intermediate\Dtos\Video\CreateVideoInputDto;
+use Core\Intermediate\Dtos\Video\CreateVideoOutputDto;
 
 class CreateVideoUseCaseUnitTest extends BaseVideoUseCaseUnitTest
 {

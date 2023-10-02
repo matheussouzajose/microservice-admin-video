@@ -3,9 +3,9 @@
 namespace Feature\Core\Application\UseCases\Video;
 
 use App\Models\Video;
-use Core\Application\UseCases\Video\Paginate\DTO\PaginateVideosInputDto;
-use Core\Application\UseCases\Video\Paginate\PaginateVideosUseCase;
+use Core\Application\UseCases\Video\PaginateVideosUseCase;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\PaginateVideosInputDto;
 use Tests\TestCase;
 
 class PaginateVideosUseCaseTest extends TestCase

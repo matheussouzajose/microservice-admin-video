@@ -2,46 +2,50 @@
 
 namespace App\Providers;
 
-use Core\Application\UseCases\CastMember\Create\CreateCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Create\CreateCastMemberUseCaseInterface;
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Delete\DeleteCastMemberUseCaseInterface;
-use Core\Application\UseCases\CastMember\List\ListCastMemberUseCase;
-use Core\Application\UseCases\CastMember\List\ListCastMemberUseCaseInterface;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCase;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCaseInterface;
-use Core\Application\UseCases\CastMember\Update\UpdateCastMemberUseCase;
-use Core\Application\UseCases\CastMember\Update\UpdateCastMemberUseCaseInterface;
-use Core\Application\UseCases\Category\Create\CreateCategoryUseCase;
-use Core\Application\UseCases\Category\Create\CreateCategoryUseCaseInterface;
-use Core\Application\UseCases\Category\Delete\DeleteCategoryUseCase;
-use Core\Application\UseCases\Category\Delete\DeleteCategoryUseCaseInterface;
-use Core\Application\UseCases\Category\List\ListCategoryUseCase;
-use Core\Application\UseCases\Category\List\ListCategoryUseCaseInterface;
-use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCase;
-use Core\Application\UseCases\Category\Paginate\PaginateCategoriesUseCaseInterface;
-use Core\Application\UseCases\Category\Update\UpdateCategoryUseCase;
-use Core\Application\UseCases\Category\Update\UpdateCategoryUseCaseInterface;
-use Core\Application\UseCases\Genre\Create\CreateGenreUseCase;
-use Core\Application\UseCases\Genre\Create\CreateGenreUseCaseInterface;
-use Core\Application\UseCases\Genre\Delete\DeleteGenreUseCase;
-use Core\Application\UseCases\Genre\Delete\DeleteGenreUseCaseInterface;
-use Core\Application\UseCases\Genre\List\ListGenreUseCase;
-use Core\Application\UseCases\Genre\List\ListGenreUseCaseInterface;
-use Core\Application\UseCases\Genre\Paginate\PaginateGenresUseCase;
-use Core\Application\UseCases\Genre\Paginate\PaginateGenresUseCaseInterface;
-use Core\Application\UseCases\Genre\Update\UpdateGenreUseCase;
-use Core\Application\UseCases\Genre\Update\UpdateGenreUseCaseInterface;
-use Core\Application\UseCases\Video\Create\CreateVideoUseCase;
-use Core\Application\UseCases\Video\Create\CreateVideoUseCaseInterface;
-use Core\Application\UseCases\Video\Delete\DeleteVideoUseCase;
-use Core\Application\UseCases\Video\Delete\DeleteVideoUseCaseInterface;
-use Core\Application\UseCases\Video\List\ListVideoUseCase;
-use Core\Application\UseCases\Video\List\ListVideoUseCaseInterface;
-use Core\Application\UseCases\Video\Paginate\PaginateVideosUseCase;
-use Core\Application\UseCases\Video\Paginate\PaginateVideosUseCaseInterface;
-use Core\Application\UseCases\Video\Update\UpdateVideoUseCase;
-use Core\Application\UseCases\Video\Update\UpdateVideoUseCaseInterface;
+use Core\Application\UseCases\Auth\SignInUseCase;
+use Core\Application\UseCases\Auth\SignUpUseCase;
+use Core\Application\UseCases\CastMember\CreateCastMemberUseCase;
+use Core\Application\UseCases\CastMember\DeleteCastMemberUseCase;
+use Core\Application\UseCases\CastMember\ListCastMemberUseCase;
+use Core\Application\UseCases\CastMember\PaginateCastMembersUseCase;
+use Core\Application\UseCases\CastMember\UpdateCastMemberUseCase;
+use Core\Application\UseCases\Category\CreateCategoryUseCase;
+use Core\Application\UseCases\Category\DeleteCategoryUseCase;
+use Core\Application\UseCases\Category\ListCategoryUseCase;
+use Core\Application\UseCases\Category\PaginateCategoriesUseCase;
+use Core\Application\UseCases\Category\UpdateCategoryUseCase;
+use Core\Application\UseCases\Genre\CreateGenreUseCase;
+use Core\Application\UseCases\Genre\DeleteGenreUseCase;
+use Core\Application\UseCases\Genre\ListGenreUseCase;
+use Core\Application\UseCases\Genre\PaginateGenresUseCase;
+use Core\Application\UseCases\Genre\UpdateGenreUseCase;
+use Core\Application\UseCases\Video\CreateVideoUseCase;
+use Core\Application\UseCases\Video\DeleteVideoUseCase;
+use Core\Application\UseCases\Video\ListVideoUseCase;
+use Core\Application\UseCases\Video\PaginateVideosUseCase;
+use Core\Application\UseCases\Video\UpdateVideoUseCase;
+use Core\Domain\UseCases\Auth\SignInUseCaseInterface;
+use Core\Domain\UseCases\Auth\SignUpUseCaseInterface;
+use Core\Domain\UseCases\CastMember\CreateCastMemberUseCaseInterface;
+use Core\Domain\UseCases\CastMember\DeleteCastMemberUseCaseInterface;
+use Core\Domain\UseCases\CastMember\ListCastMemberUseCaseInterface;
+use Core\Domain\UseCases\CastMember\PaginateCastMembersUseCaseInterface;
+use Core\Domain\UseCases\CastMember\UpdateCastMemberUseCaseInterface;
+use Core\Domain\UseCases\Category\CreateCategoryUseCaseInterface;
+use Core\Domain\UseCases\Category\DeleteCategoryUseCaseInterface;
+use Core\Domain\UseCases\Category\ListCategoryUseCaseInterface;
+use Core\Domain\UseCases\Category\PaginateCategoriesUseCaseInterface;
+use Core\Domain\UseCases\Category\UpdateCategoryUseCaseInterface;
+use Core\Domain\UseCases\Genre\CreateGenreUseCaseInterface;
+use Core\Domain\UseCases\Genre\DeleteGenreUseCaseInterface;
+use Core\Domain\UseCases\Genre\ListGenreUseCaseInterface;
+use Core\Domain\UseCases\Genre\PaginateGenresUseCaseInterface;
+use Core\Domain\UseCases\Genre\UpdateGenreUseCaseInterface;
+use Core\Domain\UseCases\Video\CreateVideoUseCaseInterface;
+use Core\Domain\UseCases\Video\DeleteVideoUseCaseInterface;
+use Core\Domain\UseCases\Video\ListVideoUseCaseInterface;
+use Core\Domain\UseCases\Video\PaginateVideosUseCaseInterface;
+use Core\Domain\UseCases\Video\UpdateVideoUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 
 class UseCaseServiceProvider extends ServiceProvider
@@ -74,6 +78,9 @@ class UseCaseServiceProvider extends ServiceProvider
         $this->app->singleton(ListVideoUseCaseInterface::class, ListVideoUseCase::class);
         $this->app->singleton(PaginateVideosUseCaseInterface::class, PaginateVideosUseCase::class);
         $this->app->singleton(UpdateVideoUseCaseInterface::class, UpdateVideoUseCase::class);
+
+        $this->app->singleton(SignUpUseCaseInterface::class, SignUpUseCase::class);
+        $this->app->singleton(SignInUseCaseInterface::class, SignInUseCase::class);
     }
 
     /**

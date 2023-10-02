@@ -3,10 +3,10 @@
 namespace Feature\Core\Application\UseCases\Video;
 
 use App\Models\Video;
-use Core\Application\UseCases\Video\Delete\DeleteVideoUseCase;
-use Core\Application\UseCases\Video\Delete\DTO\DeleteVideoInputDto;
+use Core\Application\UseCases\Video\DeleteVideoUseCase;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\DeleteVideoInputDto;
 use Tests\TestCase;
 
 class DeleteVideoUseCaseTest extends TestCase

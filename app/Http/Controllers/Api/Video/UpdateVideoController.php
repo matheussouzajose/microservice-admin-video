@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api\Video;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateVideoRequest;
-use Core\Application\UseCases\Video\Update\DTO\UpdateVideoInputDto;
-use Core\Application\UseCases\Video\Update\UpdateVideoUseCase;
+use Core\Application\UseCases\Video\UpdateVideoUseCase;
 use Core\Domain\Exception\NotificationException;
+use Core\Intermediate\Dtos\Video\UpdateVideoInputDto;
 use Illuminate\Http\JsonResponse;
 
 class UpdateVideoController extends Controller

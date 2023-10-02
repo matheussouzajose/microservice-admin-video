@@ -25,7 +25,7 @@ if (! function_exists('convertArrayToObject')) {
         $response = [];
 
         foreach ($data as $item) {
-            $stdClass = new \stdClass;
+            $stdClass = new \stdClass();
             foreach ($item as $key => $value) {
                 $stdClass->{$key} = $value;
             }

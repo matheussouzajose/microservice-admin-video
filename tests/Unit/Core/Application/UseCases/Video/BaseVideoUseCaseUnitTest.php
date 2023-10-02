@@ -2,16 +2,16 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Interfaces\FileStorageInterface;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
-use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
 use Core\Domain\Entity\Video;
 use Core\Domain\Enum\Rating;
+use Core\Domain\Event\Interfaces\VideoEventManagerInterface;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Domain\Services\FileStorageInterface;
 use Tests\TestCase;
 
 abstract class BaseVideoUseCaseUnitTest extends TestCase
@@ -36,12 +36,9 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
     protected function createUseCase(
         int $timesCallMethodActionRepository = 1,
         int $timesCallMethodUpdateMediaRepository = 1,
-
         int $timesCallMethodCommitTransaction = 1,
         int $timesCallMethodRollbackTransaction = 0,
-
         int $timesCallMethodStoreFileStorage = 0,
-
         int $timesCallMethodDispatchEventManager = 0
     ): void {
         $this->useCase = new ($this->getUseCase())(
@@ -59,7 +56,6 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
             eventManager: $this->createMockEventManager(
                 times: $timesCallMethodDispatchEventManager
             ),
-
             categoryRepository: $this->createMockRepositoryCategory(),
             genreRepository: $this->createMockRepositoryGenre(),
             castMemberRepository: $this->createMockRepositoryCastMember(),

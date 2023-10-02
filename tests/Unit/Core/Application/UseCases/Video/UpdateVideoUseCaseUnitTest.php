@@ -2,10 +2,10 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\Update\DTO\UpdateVideoInputDto;
-use Core\Application\UseCases\Video\Update\DTO\UpdateVideoOutputDto;
-use Core\Application\UseCases\Video\Update\UpdateVideoUseCase;
+use Core\Application\UseCases\Video\UpdateVideoUseCase;
 use Core\Domain\ValueObject\Uuid;
+use Core\Intermediate\Dtos\Video\UpdateVideoInputDto;
+use Core\Intermediate\Dtos\Video\UpdateVideoOutputDto;
 
 class UpdateVideoUseCaseUnitTest extends BaseVideoUseCaseUnitTest
 {

@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
-use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
-use Core\Application\UseCases\Genre\List\DTO\ListGenreOutputDto;
-use Core\Application\UseCases\Genre\List\ListGenreUseCase;
+use Core\Application\UseCases\Genre\ListGenreUseCase;
 use Core\Domain\Entity\Genre as EntityGenre;
 use Core\Domain\Repository\GenreRepositoryInterface;
 use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
+use Core\Intermediate\Dtos\Genre\ListGenreInputDto;
+use Core\Intermediate\Dtos\Genre\ListGenreOutputDto;
 use Ramsey\Uuid\Uuid;
 use Tests\TestCase;
 

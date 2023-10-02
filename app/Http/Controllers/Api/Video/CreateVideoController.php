@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api\Video;
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVideoRequest;
-use Core\Application\UseCases\Video\Create\CreateVideoUseCase;
-use Core\Application\UseCases\Video\Create\DTO\CreateVideoInputDto;
+use Core\Application\UseCases\Video\CreateVideoUseCase;
 use Core\Domain\Enum\Rating;
 use Core\Domain\Exception\NotificationException;
+use Core\Intermediate\Dtos\Video\CreateVideoInputDto;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 

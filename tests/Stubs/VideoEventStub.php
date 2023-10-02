@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
+use Core\Domain\Event\Interfaces\VideoEventManagerInterface;
 
 class VideoEventStub implements VideoEventManagerInterface
 {

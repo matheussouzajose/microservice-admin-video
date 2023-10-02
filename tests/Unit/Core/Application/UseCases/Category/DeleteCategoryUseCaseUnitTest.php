@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Category;
 
-use Core\Application\UseCases\Category\Delete\DeleteCategoryUseCase;
-use Core\Application\UseCases\Category\Delete\DTO\DeleteCategoryInputDto;
-use Core\Application\UseCases\Category\Delete\DTO\DeleteCategoryOutputDto;
+use Core\Application\UseCases\Category\DeleteCategoryUseCase;
 use Core\Domain\Repository\CategoryRepositoryInterface;
+use Core\Intermediate\Dtos\Category\DeleteCategoryInputDto;
+use Core\Intermediate\Dtos\Category\DeleteCategoryOutputDto;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 

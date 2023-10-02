@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Category;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Application\UseCases\Category\List\DTO\ListCategoryInputDto;
-use Core\Application\UseCases\Category\List\ListCategoryUseCaseInterface;
+use Core\Domain\UseCases\Category\ListCategoryUseCaseInterface;
+use Core\Intermediate\Dtos\Category\ListCategoryInputDto;
 use Illuminate\Http\JsonResponse;
 
 class ListCategoryController extends Controller

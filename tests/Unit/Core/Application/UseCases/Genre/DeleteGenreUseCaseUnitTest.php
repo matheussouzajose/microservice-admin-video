@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
-use Core\Application\UseCases\Genre\Delete\DeleteGenreUseCase;
-use Core\Application\UseCases\Genre\Delete\DTO\DeleteGenreOutputDto;
-use Core\Application\UseCases\Genre\List\DTO\ListGenreInputDto;
+use Core\Application\UseCases\Genre\DeleteGenreUseCase;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Intermediate\Dtos\Genre\DeleteGenreOutputDto;
+use Core\Intermediate\Dtos\Genre\ListGenreInputDto;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 

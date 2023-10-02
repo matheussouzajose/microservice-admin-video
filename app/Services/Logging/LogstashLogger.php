@@ -13,6 +13,7 @@ class LogstashLogger
     {
         $handler = new SocketHandler("udp://{$config['host']}:{$config['port']}");
         $handler->setFormatter(new LogstashFormatter(config('app.name')));
+
         return new Logger('logstash.main', [$handler]);
     }
 }

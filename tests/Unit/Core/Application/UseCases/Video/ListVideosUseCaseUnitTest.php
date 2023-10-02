@@ -2,10 +2,10 @@
 
 namespace Unit\Core\Application\UseCases\Video;
 
-use Core\Application\UseCases\Video\Paginate\DTO\PaginateVideosInputDto;
-use Core\Application\UseCases\Video\Paginate\PaginateVideosUseCase;
+use Core\Application\UseCases\Video\PaginateVideosUseCase;
 use Core\Domain\Repository\PaginationInterface;
 use Core\Domain\Repository\VideoRepositoryInterface;
+use Core\Intermediate\Dtos\Video\PaginateVideosInputDto;
 use Tests\TestCase;
 use Tests\Unit\Core\Application\UseCases\UseCaseTrait;
 

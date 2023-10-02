@@ -3,8 +3,8 @@
 namespace Feature\Core\Application\UseCases\Video;
 
 use App\Models\Video;
-use Core\Application\UseCases\Video\Update\DTO\UpdateVideoInputDto;
-use Core\Application\UseCases\Video\Update\UpdateVideoUseCase;
+use Core\Application\UseCases\Video\UpdateVideoUseCase;
+use Core\Intermediate\Dtos\Video\UpdateVideoInputDto;
 
 class UpdateVideoUseCaseTest extends BaseVideoUseCaseTest
 {

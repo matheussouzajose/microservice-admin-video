@@ -4,8 +4,8 @@ namespace Feature\Core\Application\UseCases\CastMember;
 
 use App\Models\CastMember;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
-use Core\Application\UseCases\CastMember\Paginate\DTO\PaginateCastMembersInputDto;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCase;
+use Core\Application\UseCases\CastMember\PaginateCastMembersUseCase;
+use Core\Intermediate\Dtos\CastMember\PaginateCastMembersInputDto;
 use Tests\TestCase;
 
 class PaginateCastMembersUseCaseTest extends TestCase

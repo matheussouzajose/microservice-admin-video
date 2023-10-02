@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\CastMember;
 
 use App\Adapters\ApiAdapter;
 use App\Http\Controllers\Controller;
-use Core\Application\UseCases\CastMember\Paginate\DTO\PaginateCastMembersInputDto;
-use Core\Application\UseCases\CastMember\Paginate\PaginateCastMembersUseCaseInterface;
+use Core\Domain\UseCases\CastMember\PaginateCastMembersUseCaseInterface;
+use Core\Intermediate\Dtos\CastMember\PaginateCastMembersInputDto;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

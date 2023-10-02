@@ -5,10 +5,10 @@ namespace Feature\Core\Application\UseCases\Video;
 use App\Models\CastMember;
 use App\Models\Category;
 use App\Models\Genre;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\Repository\VideoRepositoryInterface;
 use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Http\UploadedFile;
@@ -143,7 +143,6 @@ abstract class BaseVideoUseCaseTest extends TestCase
             new UploadFilesStub(),
             // $this->app->make(VideoEventManagerInterface::class),
             new VideoEventStub(),
-
             $this->app->make(CategoryRepositoryInterface::class),
             $this->app->make(GenreRepositoryInterface::class),
             $this->app->make(CastMemberRepositoryInterface::class)

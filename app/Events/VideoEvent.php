@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use Core\Application\UseCases\Video\Interfaces\VideoEventManagerInterface;
+use Core\Domain\Event\Interfaces\VideoEventManagerInterface;
 
 class VideoEvent implements VideoEventManagerInterface
 {

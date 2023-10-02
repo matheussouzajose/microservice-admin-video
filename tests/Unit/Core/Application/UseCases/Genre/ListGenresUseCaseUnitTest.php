@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
-use Core\Application\UseCases\Genre\Paginate\DTO\PaginateGenresInputDto;
-use Core\Application\UseCases\Genre\Paginate\PaginateGenresUseCase;
+use Core\Application\UseCases\Genre\PaginateGenresUseCase;
 use Core\Domain\Repository\GenreRepositoryInterface;
 use Core\Domain\Repository\PaginationInterface;
+use Core\Intermediate\Dtos\Genre\PaginateGenresInputDto;
 use Tests\TestCase;
 use Tests\Unit\Core\Application\UseCases\UseCaseTrait;
 
@@ -42,7 +42,10 @@ class ListGenresUseCaseUnitTest extends TestCase
 
         // assert
         $spy->shouldHaveReceived()->paginate(
-            'teste', 'desc', 1, 15
+            'teste',
+            'desc',
+            1,
+            15
         );
     }
 }

@@ -2,15 +2,15 @@
 
 namespace Tests\Unit\Core\Application\UseCases\Genre;
 
-use Core\Application\UseCases\Genre\Update\DTO\UpdateGenreInputDto;
-use Core\Application\UseCases\Genre\Update\DTO\UpdateGenreOutputDto;
-use Core\Application\UseCases\Genre\Update\UpdateGenreUseCase;
-use Core\Application\UseCases\Interfaces\TransactionInterface;
+use Core\Application\UseCases\Genre\UpdateGenreUseCase;
 use Core\Domain\Entity\Genre as EntityGenre;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;
+use Core\Domain\Repository\TransactionInterface;
 use Core\Domain\ValueObject\Uuid as ValueObjectUuid;
+use Core\Intermediate\Dtos\Genre\UpdateGenreInputDto;
+use Core\Intermediate\Dtos\Genre\UpdateGenreOutputDto;
 use Ramsey\Uuid\Uuid;
 use Tests\TestCase;
 

@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Core\Application\UseCases\CastMember;
 
-use Core\Application\UseCases\CastMember\List\DTO\ListCastMemberInputDto;
-use Core\Application\UseCases\CastMember\List\DTO\ListCastMemberOutputDto;
-use Core\Application\UseCases\CastMember\List\ListCastMemberUseCase;
+use Core\Application\UseCases\CastMember\ListCastMemberUseCase;
 use Core\Domain\Entity\CastMember as EntityCastMember;
 use Core\Domain\Enum\CastMemberType;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\ValueObject\Uuid;
+use Core\Intermediate\Dtos\CastMember\ListCastMemberInputDto;
+use Core\Intermediate\Dtos\CastMember\ListCastMemberOutputDto;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
