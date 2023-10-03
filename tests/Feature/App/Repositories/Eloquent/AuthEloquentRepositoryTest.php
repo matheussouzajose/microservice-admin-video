@@ -104,7 +104,7 @@ class AuthEloquentRepositoryTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage("User " .  UserFixtures::UUID_MATHEUS . " Not Found");
-        $this->repository->logout(UserFixtures::UUID_MATHEUS);
+        $this->repository->deleteTokensByUserId(UserFixtures::UUID_MATHEUS);
     }
 
     /**
@@ -119,7 +119,7 @@ class AuthEloquentRepositoryTest extends TestCase
 
         $user->createToken('authtoken');
 
-        $result = $this->repository->logout($user->id);
+        $result = $this->repository->deleteTokensByUserId($user->id);
         $this->assertTrue($result);
     }
 }

@@ -14,5 +14,5 @@ interface AuthRepositoryInterface
 
     public function createTokenByUserId(string $id): string;
 
-    public function logout(string $id): bool;
+    public function deleteTokensByUserId(string $id): bool;
 }

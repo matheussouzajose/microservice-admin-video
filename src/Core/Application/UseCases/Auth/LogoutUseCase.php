@@ -16,7 +16,7 @@ class LogoutUseCase implements LogoutUseCaseInterface
 
     public function execute(LogoutInputDto $input): LogoutOutputDto
     {
-        $disconnected = $this->repository->logout($input->id);
+        $disconnected = $this->repository->deleteTokensByUserId($input->id);
         return new LogoutOutputDto(
             disconnected: $disconnected
         );

@@ -35,7 +35,7 @@ class LogoutUseCaseUnitTest extends TestCase
             input: $this->makeInputDto()
         );
 
-        $sut->repository->shouldHaveReceived('logout')->once()->with(UserFixtures::UUID_MATHEUS);
+        $sut->repository->shouldHaveReceived('deleteTokensByUserId')->once()->with(UserFixtures::UUID_MATHEUS);
     }
 
     public function testThrowsMethodsIfThrows()
@@ -44,7 +44,7 @@ class LogoutUseCaseUnitTest extends TestCase
 
         $sut = $this->makeSut();
 
-        $sut->repository->shouldReceive('logout')->andThrow(new \Exception());
+        $sut->repository->shouldReceive('deleteTokensByUserId')->andThrow(new \Exception());
         $sut->useCase->execute(
             input: $this->makeInputDto()
         );
@@ -53,7 +53,7 @@ class LogoutUseCaseUnitTest extends TestCase
     public function testLogoutSuccess()
     {
         $sut = $this->makeSut();
-        $sut->repository->shouldReceive('logout')->andReturn(true);
+        $sut->repository->shouldReceive('deleteTokensByUserId')->andReturn(true);
 
         $response = $sut->useCase->execute(
             input: $this->makeInputDto()
