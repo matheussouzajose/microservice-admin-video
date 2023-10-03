@@ -86,4 +86,16 @@ class AuthEloquentRepository implements AuthRepositoryInterface
         }
         return $result->createToken('authtoken')->plainTextToken;
     }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function logout(string $id): bool
+    {
+        if (! $result = $this->model->find($id)) {
+            throw new NotFoundException("User {$id} Not Found");
+        }
+
+        return $result->tokens()->delete() > 0;
+    }
 }

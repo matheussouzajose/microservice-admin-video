@@ -83,8 +83,8 @@ class AuthEloquentRepositoryTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage("User " .  UserFixtures::UUID_MATHEUS . " Not Found");
-        $result = $this->repository->createTokenByUserId(UserFixtures::UUID_MATHEUS);
-        $this->assertNotEmpty($result);
+
+        $this->repository->createTokenByUserId(UserFixtures::UUID_MATHEUS);
     }
 
     /**
@@ -98,5 +98,28 @@ class AuthEloquentRepositoryTest extends TestCase
 
         $result = $this->repository->createTokenByUserId($user->id);
         $this->assertNotEmpty($result);
+    }
+
+    public function testLogoutThrows()
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage("User " .  UserFixtures::UUID_MATHEUS . " Not Found");
+        $this->repository->logout(UserFixtures::UUID_MATHEUS);
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function testLogoutSuccess()
+    {
+        $user = Model::factory()->create([
+            'id' => UserFixtures::UUID_MATHEUS,
+            'email' => UserFixtures::EMAIL_MATHEUS
+        ]);
+
+        $user->createToken('authtoken');
+
+        $result = $this->repository->logout($user->id);
+        $this->assertTrue($result);
     }
 }

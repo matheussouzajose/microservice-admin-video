@@ -18,7 +18,7 @@ use Tests\TestCase;
 
 class SignInControllerTest extends TestCase
 {
-    public function testSignUpSuccess()
+    public function testSignInSuccess()
     {
         $useCase = $this->makeUseCase();
         $request = $this->makeRequest();
