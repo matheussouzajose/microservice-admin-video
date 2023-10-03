@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Core\Domain\Exception\CredentialIncorrectException;
 use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Exception\EntityValidationException;
 use Core\Domain\Exception\NotFoundException;
@@ -71,7 +72,10 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof AuthenticationException) {
             return $this->showError(trans('Unauthorized'), Response::HTTP_UNAUTHORIZED);
+        }
 
+        if ($e instanceof CredentialIncorrectException) {
+            return $this->showError($e->getMessage(), Response::HTTP_UNAUTHORIZED);
         }
 
         return parent::render($request, $e);
