@@ -6,6 +6,7 @@ use Core\Domain\Exception\EmailAlreadyInUseException;
 use Core\Domain\Exception\EntityValidationException;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Exception\NotificationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use KeycloakGuard\Exceptions\TokenException;
@@ -66,6 +67,11 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof EmailAlreadyInUseException) {
             return $this->showError($e->getMessage(), Response::HTTP_CONFLICT);
+        }
+
+        if ($e instanceof AuthenticationException) {
+            return $this->showError(trans('Unauthorized'), Response::HTTP_UNAUTHORIZED);
+
         }
 
         return parent::render($request, $e);
