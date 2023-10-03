@@ -103,4 +103,23 @@ class AuthApiTest extends TestCase
             ->postJson("{$this->endpoint}/logout");
         $response->assertStatus(Response::HTTP_NO_CONTENT);
     }
+
+    public function testRefreshTokenSuccess()
+    {
+        $user = User::factory()->create([
+            'id' => UserFixtures::UUID_MATHEUS,
+            'email' => UserFixtures::EMAIL_MATHEUS,
+            'password' => Hash::make(UserFixtures::DEFAULT_PASSWORD)
+        ]);
+
+        $token = $user->createToken('authtoken')->plainTextToken;
+
+        $response = $this
+            ->withHeader('Authorization', "Bearer {$token}")
+            ->postJson("{$this->endpoint}/refresh");
+
+        $response->assertStatus(Response::HTTP_OK);
+        $this->assertNotEmpty($response['data']['access_token']);
+        $this->assertEquals('Bearer', $response['data']['token_type']);
+    }
 }
